@@ -1,0 +1,36 @@
+name: Update Certificate
+
+# Controls when the action will run.
+on:
+  schedule:
+    # Runs at 16:00 UTC on the 15th in Jan, Mar, May, Jul, Sep, and Nov
+    - cron: '0 16 15 1,3,5,7,9,11 *'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Issue Certificate
+        uses: cinderblockgames/letsencrypt-dns-cpanel-action@develop
+        with:
+          # cPanel
+          host: cinderblockgames.com
+          cpanelUsername: ${{ secrets.CPANEL_USERNAME }}
+          cpanelApiToken: ${{ secrets.CPANEL_API_KEY }}
+          domain: homelab.express
+          # Let's Encrypt
+          acmeAccountEmailAddress: hello@cinderblockgames.com
+          acmeAccountKey: ${{ secrets.ACME_ACCOUNT_KEY }}
+          certCN: '*.homelab.express'
+          certOrg: homelab.express
+          certOU: private network
+          certLocality: private
+          certState: network
+          certCountry: earth
+          certDomainList: '*.homelab.express|*.red.homelab.express|*.orange.homelab.express|*.yellow.homelab.express|*.green.homelab.express|*.blue.homelab.express|*.purple.homelab.express|*.pink.homelab.express|*.brown.homelab.express|*.black.homelab.express|*.white.homelab.express|*.gomez.homelab.express|*.morticia.homelab.express|*.wednesday.homelab.express|*.puglsey.homelab.express|*.fester.homelab.express|*.lurch.homelab.express|*.thing.homelab.express|*.itt.homelab.express|*.heart.homelab.express|*.star.homelab.express|*.horseshoe.homelab.express|*.clover.homelab.express|*.moon.homelab.express|*.gold.homelab.express|*.rainbow.homelab.express|*.balloon.homelab.express|*.hat.homelab.express|*.sword.homelab.express|*.spear.homelab.express|*.axe.homelab.express|*.bow.homelab.express|*.fist.homelab.express|*.mercury.homelab.express|*.venus.homelab.express|*.earth.homelab.express|*.mars.homelab.express|*.jupiter.homelab.express|*.saturn.homelab.express|*.uranus.homelab.express|*.neptune.homelab.express|*.pluto.homelab.express|*.ceres.homelab.express|*.zero.homelab.express|*.one.homelab.express|*.two.homelab.express|*.three.homelab.express|*.four.homelab.express|*.five.homelab.express|*.six.homelab.express|*.seven.homelab.express|*.eight.homelab.express|*.nine.homelab.express|*.amethyst.homelab.express|*.beryl.homelab.express|*.diamond.homelab.express|*.emerald.homelab.express|*.garnet.homelab.express|*.onyx.homelab.express|*.opal.homelab.express|*.pearl.homelab.express|*.ruby.homelab.express|*.sapphire.homelab.express|*.topaz.homelab.express|*.alpha.homelab.express|*.beta.homelab.express|*.gamma.homelab.express|*.delta.homelab.express|*.epsilon.homelab.express|*.salmon.homelab.express|*.bass.homelab.express|*.tuna.homelab.express|*.unagi.homelab.express|*.escolar.homelab.express|*.tofu.homelab.express|*.tempeh.homelab.express|*.seitan.homelab.express|*.apple.homelab.express|*.banana.homelab.express|*.coconut.homelab.express|*.lemon.homelab.express|*.lime.homelab.express|*.mango.homelab.express|*.pear.homelab.express|*.pineapple.homelab.express|*.plum.homelab.express|*.pomegranate.homelab.express|*.blueberry.homelab.express|*.blackberry.homelab.express|*.raspberry.homelab.express|*.strawberry.homelab.express|*.peanut.homelab.express|*.almond.homelab.express|*.cashew.homelab.express|*.pecan.homelab.express|*.walnut.homelab.express|*.hazelnut.homelab.express|*.pistachio.homelab.express|*.macademia.homelab.express|*.chestnut.homelab.express'
+          # GitHub
+          githubAccessToken: ${{ secrets.GITHUB_ACCESS_TOKEN }}
+          secretsRepo: cinderblockgames/homelab.express
