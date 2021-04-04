@@ -23,7 +23,7 @@ jobs:
           domain: homelab.express
           # Let's Encrypt
           acmeAccountEmailAddress: hello@cinderblockgames.com
-          acmeAccountKey: '${{ secrets.ACME_ACCOUNT_KEY }}'
+          #acmeAccountKey: '${{ secrets.ACME_ACCOUNT_KEY }}'
           certCN: '*.homelab.express'
           certOrg: homelab.express
           certOU: private network
