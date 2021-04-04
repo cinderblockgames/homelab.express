@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  issue-cert:
+  update-cert:
     runs-on: ubuntu-latest
     steps:
       - name: Get files
