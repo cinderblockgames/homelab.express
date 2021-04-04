@@ -13,9 +13,6 @@ jobs:
   update-cert:
     runs-on: ubuntu-latest
     steps:
-      - name: Get files
-        uses: actions/checkout@v2.3.4
-          
       - name: Issue certificate
         uses: cinderblockgames/letsencrypt-dns-cpanel-action@develop
         with:
