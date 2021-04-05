@@ -43,4 +43,4 @@ jobs:
           # optional
           source: ~/
           destination: cert/
-          skipUnchanged: true
+          skipUnchanged: false
