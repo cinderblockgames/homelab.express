@@ -22,7 +22,7 @@ jobs:
           cpanelApiToken: '${{ secrets.CPANEL_API_KEY }}'
           domain: homelab.express
           # Let's Encrypt
-          acmeAccountEmailAddress: hello@cinderblockgames.com
+          acmeAccountEmailAddress: homelab.express@cinderblockgames.com
           #acmeAccountKey: '${{ secrets.ACME_ACCOUNT_KEY }}'
           certCN: '*.homelab.express'
           certOrg: homelab.express
