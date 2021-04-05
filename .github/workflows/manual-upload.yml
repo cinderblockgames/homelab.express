@@ -8,7 +8,19 @@ on:
 jobs:
   update-cert:
     runs-on: ubuntu-latest
-#    steps:
+    steps:
+      - name: Copy certificate public chain
+        uses: DamianReeves/write-file-action@v1.0.0
+        with:
+          path: ${{ env.home }}/*.homelab.express.pem.txt
+          contents: ${{ env.CERT_PUBLIC_CHAIN }}
+          write-mode: overwrite
+      - name: Copy certificate private key
+        uses: DamianReeves/write-file-action@v1.0.0
+        with:
+          path: ${{ env.home }}/*.homelab.express.pfx.txt
+          contents: ${{ env.CERT_PRIVATE_KEY }}
+          write-mode: overwrite
 #      - name: Issue certificate
 #        uses: cinderblockgames/letsencrypt-dns-cpanel-action@develop
 #        with:
