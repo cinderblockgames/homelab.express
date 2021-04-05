@@ -30,9 +30,12 @@ jobs:
         #shell: bash
         #run: mv ${{ steps.write-file.outputs.filePath }} /stage
         run: echo ${{ secrets.CERT_PRIVATE_KEY }} | base64 --decode > /tmp/stage/*.homelab.express.pfx.txt
+      - name: Make staging directory
+        shell: bash
+        run: sudo mkdir /var/stage/
       - name: Stage files
         shell: bash
-        run: sudo mkdir /var/stage/ | mv /tmp/stage/* /var/stage/
+        run: mv /tmp/stage/* /var/stage/
       #- name: FTP Deploy
       #  uses: cinderblockgames/ftp-action@v1.2.2
       #  with:
