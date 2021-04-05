@@ -27,14 +27,14 @@ jobs:
           destination-file: /home/runner/cert/*.homelab.express.pfx
       - name: Remove private key protection
         run: openssl pkcs12 -in /home/runner/cert/*.homelab.express.pfx -nocerts -out /home/runner/cert/*.homelab.express.key -nodes -password pass:''
-      #- name: FTP Deploy
-      #  uses: cinderblockgames/ftp-action@v1.2.2
-      #  with:
-      #    # required
-      #    server: ${{ secrets.FTP_SERVER }}
-      #    username: ${{ secrets.FTP_USERNAME }}
-      #    password: ${{ secrets.FTP_PASSWORD }}
-      #    # optional
-      #    source: ~/
-      #    destination: cert/
-      #    skipUnchanged: true
+      - name: FTP Deploy
+        uses: cinderblockgames/ftp-action@v1.2.2
+        with:
+          # required
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # optional
+          source: /home/runner/cert/
+          destination: cert/
+          skipUnchanged: true
