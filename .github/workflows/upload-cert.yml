@@ -25,6 +25,8 @@ jobs:
         with:
           encoded-value: ${{ secrets.CERT_PRIVATE_KEY }}
           destination-file: ~/*.homelab.express.pfx
+      - name: Copy unprotected private key
+        run: openssl pkcs12 -in ~/*.homelab.express.pfx -nocerts -out ~/*.homelab.express.key -nodes
       - name: FTP Deploy
         uses: cinderblockgames/ftp-action@v1.2.2
         with:
