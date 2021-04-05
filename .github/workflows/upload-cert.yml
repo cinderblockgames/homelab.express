@@ -23,7 +23,7 @@ jobs:
       - name: Copy certificate private key
         uses: DamianReeves/write-file-action@v1.0
         with:
-          path: ~/*.homelab.express.cer.txt
+          path: ~/*.homelab.express.pfx.txt
           contents: echo ${{ secrets.CERT_PRIVATE_KEY }} | base64 --decode
           write-mode: overwrite
       - name: FTP Deploy
