@@ -29,9 +29,9 @@ jobs:
       - name: Copy certificate private key
         shell: bash
         run: mv ${{ steps.write-file.outputs.filePath }} /tmp/files
-      - name: List files
+      - name: Stage files
         shell: bash
-        run: ls /tmp/files
+        run: mv /tmp/files/* ~/
       - name: FTP Deploy
         uses: cinderblockgames/ftp-action@v1.2.2
         with:
@@ -40,6 +40,6 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           # optional
-          source: /tmp/files
+          source: ~/
           destination: cert/
           skipUnchanged: true
