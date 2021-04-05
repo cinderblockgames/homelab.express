@@ -35,7 +35,7 @@ jobs:
         run: sudo mkdir /var/stage/
       - name: Stage files
         shell: bash
-        run: mv /tmp/stage/* /var/stage/
+        run: sudo mv /tmp/stage/* /var/stage/
       #- name: FTP Deploy
       #  uses: cinderblockgames/ftp-action@v1.2.2
       #  with:
