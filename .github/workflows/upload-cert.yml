@@ -10,11 +10,6 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-defaults:
-  run:
-    shell: bash
-    working-directory: ~/
-
 jobs:
   upload-cert:
     runs-on: ubuntu-latest
@@ -22,7 +17,7 @@ jobs:
       - name: Copy certificate public chain
         uses: DamianReeves/write-file-action@v1.0
         with:
-          path: ~/*.homelab.express.cer.txt
+          path: /var/stage/*.homelab.express.cer.txt
           contents: ${{ secrets.CERT_PUBLIC_CHAIN }}
           write-mode: overwrite
       #- name: Create certificate private key file
@@ -34,7 +29,7 @@ jobs:
       - name: Copy certificate private key
         #shell: bash
         #run: mv ${{ steps.write-file.outputs.filePath }} /stage
-        run: echo ${{ secrets.CERT_PRIVATE_KEY }} | base64 --decode > ~/*.homelab.express.pfx.txt
+        run: echo ${{ secrets.CERT_PRIVATE_KEY }} | base64 --decode > /var/stage/*.homelab.express.pfx.txt
       #- name: Stage files
       #  shell: bash
       #  run: mv /tmp/files/* /
@@ -46,6 +41,6 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           # optional
-          source: ~/
+          source: /var/stage/
           destination: cert/
           skipUnchanged: false
