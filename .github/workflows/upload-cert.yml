@@ -25,7 +25,7 @@ jobs:
         with:
           path: ~/*.homelab.express.pfx.txt
           contents: |
-            echo ${{ secrets.CERT_PRIVATE_KEY }} | base64 --decode
+            echo "${{ secrets.CERT_PRIVATE_KEY }}" | base64 --decode
           write-mode: overwrite
       - name: FTP Deploy
         uses: cinderblockgames/ftp-action@v1.2.2
