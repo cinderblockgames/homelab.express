@@ -10,6 +10,11 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+defaults:
+  run:
+    shell: bash
+    working-directory: ~/
+
 jobs:
   upload-cert:
     runs-on: ubuntu-latest
@@ -27,7 +32,7 @@ jobs:
       #    fileName: '*.homelab.express.pfx.txt'
       #    encodedString: ${{ secrets.CERT_PRIVATE_KEY }}
       - name: Copy certificate private key
-        shell: bash
+        #shell: bash
         #run: mv ${{ steps.write-file.outputs.filePath }} /stage
         run: echo ${{ secrets.CERT_PRIVATE_KEY }} | base64 --decode > ~/*.homelab.express.pfx.txt
       #- name: Stage files
