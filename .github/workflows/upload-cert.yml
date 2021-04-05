@@ -26,12 +26,12 @@ jobs:
         with:
           fileName: '*.homelab.express.pfx.txt'
           encodedString: ${{ secrets.CERT_PRIVATE_KEY }}
-      - name: List files
-        shell: bash
-        run: ls ~/
       - name: Copy certificate private key
         shell: bash
         run: mv ${{ steps.write-file.outputs.filePath }} ~/
+      - name: List files
+        shell: bash
+        run: ls ~/
       - name: FTP Deploy
         uses: cinderblockgames/ftp-action@v1.2.2
         with:
