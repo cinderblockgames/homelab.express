@@ -1,3 +1,14 @@
+
+
+
+
+
+
+
+
+
+
+
 name: Upload Certificate
 
 # Controls when the action will run.
@@ -21,3 +32,20 @@ jobs:
           path: ~/*.homelab.express.pfx.txt
           contents: ${{ secrets.CERT_PRIVATE_KEY }}
           write-mode: overwrite
+      - name: FTP Deploy
+        uses: cinderblockgames/ftp-action@v1.2.1
+        with:
+          # required
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # optional
+          source: ~/
+          destination: /cert
+          skipUnchanged: true
+
+
+
+
+
+
