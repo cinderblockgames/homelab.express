@@ -17,14 +17,14 @@ jobs:
       - name: Copy certificate public chain
         uses: DamianReeves/write-file-action@v1.0
         with:
-          path: ~/*.homelab.express.cer
+          path: ${{ github.workspace }}/*.homelab.express.cer
           contents: ${{ secrets.CERT_PUBLIC_CHAIN }}
           write-mode: overwrite
       - name: Copy certificate private key
         uses: kitek/decode-base64-into-file-action@1.0
         with:
           encoded-value: ${{ secrets.CERT_PRIVATE_KEY }}
-          destination-file: ~/*.homelab.express.pfx
+          destination-file: ${{ github.workspace }}/*.homelab.express.pfx
       - name: Remove private key protection
         run: openssl pkcs12 -in ${{ github.workspace }}/*.homelab.express.pfx -nocerts -out ${{ github.workspace }}/*.homelab.express.key -nodes -password pass:''
       - name: Copy to server
@@ -35,6 +35,6 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           # optional
-          source: ~/
+          source: ${{ github.workspace }}
           destination: cert/
           skipUnchanged: true
