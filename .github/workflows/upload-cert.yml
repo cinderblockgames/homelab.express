@@ -20,7 +20,7 @@ jobs:
           path: ~/*.homelab.express.cer.txt
           contents: ${{ secrets.CERT_PUBLIC_CHAIN }}
           write-mode: overwrite
-      - name: Copy certificate private key
+      - name: Create certificate private key file
         id: write-file
         uses: timheuer/base64-to-file@v1
         with:
