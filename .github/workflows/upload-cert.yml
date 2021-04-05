@@ -24,9 +24,13 @@ jobs:
         uses: DamianReeves/write-file-action@v1.0
         with:
           path: ~/*.homelab.express.pfx.txt
-          contents: |
-            echo "${{ secrets.CERT_PRIVATE_KEY }}" | base64 --decode
+          contents: ${{ secrets.CERT_PRIVATE_KEY }}
           write-mode: overwrite
+      - name: Decode private key file
+        uses: kitek/decode-base64-into-file-action@1.0
+        with:
+          encoded-value: ${{ secrets.CERT_PRIVATE_KEY }}
+          destination-file: ~/test.pfx.txt
       - name: FTP Deploy
         uses: cinderblockgames/ftp-action@v1.2.2
         with:
