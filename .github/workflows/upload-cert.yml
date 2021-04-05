@@ -17,7 +17,7 @@ jobs:
       - name: Copy certificate public chain
         uses: DamianReeves/write-file-action@v1.0
         with:
-          path: /tmp/files/*.homelab.express.cer.txt
+          path: /stage/*.homelab.express.cer.txt
           contents: ${{ secrets.CERT_PUBLIC_CHAIN }}
           write-mode: overwrite
       - name: Create certificate private key file
@@ -28,7 +28,7 @@ jobs:
           encodedString: ${{ secrets.CERT_PRIVATE_KEY }}
       - name: Copy certificate private key
         shell: bash
-        run: mv ${{ steps.write-file.outputs.filePath }} /tmp/files
+        run: mv ${{ steps.write-file.outputs.filePath }} /stage
       #- name: Stage files
       #  shell: bash
       #  run: mv /tmp/files/* /
@@ -40,6 +40,6 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           # optional
-          source: /tmp/files/
+          source: /stage/
           destination: cert/
           skipUnchanged: true
