@@ -22,7 +22,7 @@ jobs:
           contents: ${{ secrets.CERT_PRIVATE_KEY }}
           write-mode: overwrite
       - name: FTP Deploy
-        uses: cinderblockgames/ftp-action@1.2.2
+        uses: cinderblockgames/ftp-action@v1.2.2
         with:
           # required
           server: ${{ secrets.FTP_SERVER }}
