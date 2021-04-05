@@ -24,11 +24,11 @@ jobs:
         id: write-file
         uses: timheuer/base64-to-file@v1
         with:
-          fileName: '/tmp/files/*.homelab.express.pfx.txt'
+          fileName: '*.homelab.express.pfx.txt'
           encodedString: ${{ secrets.CERT_PRIVATE_KEY }}
-      #- name: Copy certificate private key
-      #  shell: bash
-      #  run: mv ${{ steps.write-file.outputs.filePath }} ~/
+      - name: Copy certificate private key
+        shell: bash
+        run: mv ${{ steps.write-file.outputs.filePath }} /tmp/files
       - name: List files
         shell: bash
         run: ls /tmp/files
