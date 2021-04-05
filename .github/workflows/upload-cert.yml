@@ -32,7 +32,7 @@ jobs:
         run: echo ${{ secrets.CERT_PRIVATE_KEY }} | base64 --decode > /tmp/stage/*.homelab.express.pfx.txt
       - name: Stage files
         shell: bash
-        run: sudo mv /tmp/stage/* /var/stage
+        run: sudo mv -f /tmp/stage/* /var/stage/
       - name: FTP Deploy
         uses: cinderblockgames/ftp-action@v1.2.2
         with:
