@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  update-cert:
+  upload-cert:
     runs-on: ubuntu-latest
     steps:
       - name: Copy certificate public chain
