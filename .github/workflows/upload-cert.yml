@@ -20,15 +20,15 @@ jobs:
           path: ~/*.homelab.express.cer.txt
           contents: ${{ secrets.CERT_PUBLIC_CHAIN }}
           write-mode: overwrite
-      - name: Create certificate private key file
+      - name: Copy certificate private key
         id: key-file
         uses: timheuer/base64-to-file@v1
         with:
-          fileName: '*.homelab.express.pfx.txt'
+          fileName: '~/*.homelab.express.pfx.txt'
           encodedString: ${{ secrets.CERT_PRIVATE_KEY }}
-      - name: Copy certificate private key
-        shell: bash
-        run: mv ${{ steps.write_file.outputs.filePath }} ~/
+      #- name: Copy certificate private key
+      #  shell: bash
+      #  run: mv ${{ steps.write_file.outputs.filePath }} ~/
       - name: FTP Deploy
         uses: cinderblockgames/ftp-action@v1.2.2
         with:
