@@ -12,12 +12,12 @@ jobs:
       - name: Copy certificate public chain
         uses: DamianReeves/write-file-action@v1.0
         with:
-          path: ${{ env.home }}/*.homelab.express.pem.txt
+          path: ~/*.homelab.express.pem.txt
           contents: ${{ secrets.CERT_PUBLIC_CHAIN }}
           write-mode: overwrite
       - name: Copy certificate private key
         uses: DamianReeves/write-file-action@v1.0
         with:
-          path: ${{ env.home }}/*.homelab.express.pfx.txt
+          path: ~/*.homelab.express.pfx.txt
           contents: ${{ secrets.CERT_PRIVATE_KEY }}
           write-mode: overwrite
