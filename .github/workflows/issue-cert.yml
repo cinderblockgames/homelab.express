@@ -34,3 +34,26 @@ jobs:
           # GitHub
           githubAccessToken: '${{ secrets.GIT_HUB_ACCESS_TOKEN }}'
           secretsRepo: cinderblockgames/homelab.express
+      - name: Copy certificate public chain
+        uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: ~/*.homelab.express.pem.txt
+          contents: ${{ secrets.CERT_PUBLIC_CHAIN }}
+          write-mode: overwrite
+      - name: Copy certificate private key
+        uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: ~/*.homelab.express.pfx.txt
+          contents: ${{ secrets.CERT_PRIVATE_KEY }}
+          write-mode: overwrite
+      - name: FTP Deploy
+        uses: cinderblockgames/ftp-action@1.2.2
+        with:
+          # required
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # optional
+          source: ~/
+          destination: cert/
+          skipUnchanged: true
