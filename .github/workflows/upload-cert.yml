@@ -33,14 +33,14 @@ jobs:
       - name: Stage files
         shell: bash
         run: sudo mkdir /var/stage/ | mv /tmp/stage/* /var/stage/
-      - name: FTP Deploy
-        uses: cinderblockgames/ftp-action@v1.2.2
-        with:
-          # required
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          # optional
-          source: /var/stage/
-          destination: cert/
-          skipUnchanged: false
+      #- name: FTP Deploy
+      #  uses: cinderblockgames/ftp-action@v1.2.2
+      #  with:
+      #    # required
+      #    server: ${{ secrets.FTP_SERVER }}
+      #    username: ${{ secrets.FTP_USERNAME }}
+      #    password: ${{ secrets.FTP_PASSWORD }}
+      #    # optional
+      #    source: /var/stage/
+      #    destination: cert/
+      #    skipUnchanged: false
