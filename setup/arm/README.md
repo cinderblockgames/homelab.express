@@ -12,4 +12,4 @@ Before copying anything, make sure your machine is set up correctly:
   ```
 - log out and back in for the above to take effect
 
-Once you've copied the files over, make sure to update **/run/homelab/compose/infrastructure/docker-compose.yaml** to replace **${hostname}** with your machine's hostname.
+**Once you've copied the files over, make sure to update __/run/homelab/compose/infrastructure/docker-compose.yaml__ to replace __${hostname}__ with your machine's hostname.**
