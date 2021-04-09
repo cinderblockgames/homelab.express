@@ -5,7 +5,7 @@ If you are adding an additional machine into your network, copy the contents of 
 
 ## Considerations
 Before copying anything, make sure your machine is set up correctly:
-- fix the machine's IP address with a Fixed Allocation from your DHCP provider (probably your home router)
+- update the machine's IP address with a Fixed Allocation from your DHCP provider (probably your home router)
 - set up [docker and docker-compose](https://linuxhint.com/install_docker_raspberry_pi-2/)
 - run the following command:
   ```
