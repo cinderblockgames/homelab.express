@@ -1,1 +1,1 @@
-#Choose the directory corresponding to the architecture of your machine.
+## Choose the directory corresponding to the architecture of your machine.
