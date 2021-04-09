@@ -28,6 +28,8 @@ wget https://cinderblockgames.github.io/homelab.express/setup/arm/homelab.expres
 sh homelab.express-add-on.sh
 ```
 
+You'll still need to complete the steps under **Considerations** first, but you won't need to update the yaml file by hand; the scripts here take care of that for you.
+
 ## What now?
 
 Head to `/run/homelab/compose/infrastructure/` and run `docker-compose up -d`.. and that's it!
