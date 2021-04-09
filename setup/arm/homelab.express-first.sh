@@ -1,6 +1,6 @@
 #!/bin/sh
 
-homelab="/run/homelab2"
+homelab="/run/homelab"
 
 if [ ! -d $homelab ]; then
 
