@@ -46,7 +46,7 @@ Congratulations; you've hit the ground running!
 
 ## Adding more containers
 
-When standing up additional containers, all you need to do to have them served correctly by traefik behind our certificate is to ensure it's on the same network as traefik `network_mode: bridge` and add the following labels:
+When standing up additional containers, all you need to do to have them served correctly by traefik behind our certificate is to ensure it's on the same network as traefik (`network_mode: bridge`) and add the following labels:
 ```
       - 'traefik.enable=true'
       - 'traefik.http.routers.{your-container}.rule=Host(`{your-subdomain}.homelab.express`)'
