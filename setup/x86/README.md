@@ -43,3 +43,32 @@ If you've got your new lab's IP set in your hosts file, head to one of the follo
 Congratulations; you've hit the ground running!
 
 (If this is an add-on machine, you'll need to add it to your portainer endpoints at https://manage.homelab.express.  The portainer agent on your add-on machine runs on port 9001.)
+
+## Adding more containers
+
+When standing up additional containers, all you need to do to have them served correctly by traefik behind our certificate is to ensure it's on the same network as traefik (`network_mode: bridge`) and add the following labels:
+```
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.{your-container}.rule=Host(`{your-subdomain}.homelab.express`)'
+      - 'traefik.http.routers.{your-container}.entrypoints=web-secure'
+      - 'traefik.http.routers.{your-container}.tls'
+      - 'traefik.http.services.{your-container}.loadbalancer.server.port={your-port}'
+```
+
+Here is an example with the [whoami](https://hub.docker.com/r/containous/whoami) container, which stands up a lightweight demo server:
+```
+version: '3.8'
+
+services:
+  whoami:
+    image: 'containous/whoami'
+    container_name: whoami
+    restart: always
+    network_mode: bridge
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.whoami.rule=Host(`whoami.homelab.express`)'
+      - 'traefik.http.routers.whoami.entrypoints=web-secure'
+      - 'traefik.http.routers.whoami.tls'
+      - 'traefik.http.services.whoami.loadbalancer.server.port=80'
+```
