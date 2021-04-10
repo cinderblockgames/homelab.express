@@ -21,6 +21,6 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         # optional
         source: web
-        skipDirectories: .github|.well-known|certs
+        skipDirectories: .github|.well-known|cert
         skipUnchanged: true
         
