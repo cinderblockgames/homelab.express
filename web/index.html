@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="the homelab.express domain is reserved for your private use, intended to aid in the setup of TLS in your personal home lab.  we provide you with our wildcard certificate, renewed every two months through Let's Encrypt and shared here.  for free, forever." />
+    <title>homelab.express</title>
+    
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" />
+<!--
+Reflux Template
+https://templatemo.com/tm-531-reflux
+-->
+    <!-- Bootstrap core CSS -->
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css" />
+    <link rel="stylesheet" href="assets/css/site.css" />
+  </head>
+
+  <body>
+    <div id="page-wraper">
+      <!-- Sidebar Menu -->
+      <div class="responsive-nav">
+        <i class="fa fa-bars" id="menu-toggle"></i>
+        <div id="menu" class="menu">
+          <i class="fa fa-times" id="menu-close"></i>
+          <div class="container">
+            <div class="author-content">
+              <h4>homelab.express</h4>
+              <span>get to the fun stuff, fast</span>
+            </div>
+            <nav class="main-nav" role="navigation">
+              <ul class="main-menu">
+                <li><a href="#section-network">your personal network</a></li>
+                <li><a href="#section-subdomains">multi-level subdomains</a></li>
+                <li><a href="#section-updates">automated updates</a></li>
+                <li><a href="#section-setup">get up and running</a></li>
+              </ul>
+            </nav>
+            <div class="social-network">
+              <ul>
+                <li><a href="https://github.com/cinderblockgames/homelab.express" title="github"><i class="fa fa-github"></i></a></li>
+                <li><a href="https://discord.gg/4W9sBmrqjQ" title="discord"><i class="fa fa-gamepad"></i></a></li>
+                <li><a href="https://ko-fi.com/homelabexpress" title="ko-fi"><i class="fa fa-coffee"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="section network" data-section="section-network">
+        <div class="container">
+          <div class="section-heading">
+            <h2>your personal network</h2>
+            <div class="line-dec"></div>
+			      <p>the homelab.express domain is reserved for your private use, intended to aid in the setup of TLS in your personal home lab.</p>
+            <p>we provide you with our wildcard certificate, renewed every two months through Let's Encrypt and shared here.  for free, forever.</p>
+          </div>
+          <div class="row">
+          
+            <div class="col-md-4">
+              <div class="card">
+                <div class="service-icon"><i class="fa fa-certificate large-icon" aria-hidden="true"></i></div>
+                <h4><a href="/cert/wildcard.homelab.express.cer" class="fill-container">.cer</a></h4>
+                <p class="file-description">
+                  public certificate and chain
+                </p>
+              </div>
+            </div>
+            
+		        <div class="col-md-4">
+              <div class="card">
+                <div class="service-icon"><i class="fa fa-lock large-icon" aria-hidden="true"></i></div>
+                <h4><a href="/cert/wildcard.homelab.express.key" class="fill-container">.key</a></h4>
+                <p class="file-description">
+                  plaintext private key
+                </p>
+              </div>
+            </div>
+            
+		        <div class="col-md-4">
+              <div class="card">
+                <div class="service-icon"><i class="fa fa-lock large-icon" aria-hidden="true"></i></div>
+                <h4><a href="/cert/wildcard.homelab.express.pfx" class="fill-container">.pfx</a></h4>
+                <p class="file-description">
+                  certificate with private key and blank password
+                </p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+      <section class="section subdomains" data-section="section-subdomains">
+        <div class="container">
+          <div class="section-heading">
+            <h2>multi-level subdomains</h2>
+            <div class="line-dec"></div>
+            <p>since many apps need subdomains, our wildcard certificate provides you with a long list of wildcard SANs.</p>
+            <p>pick whichever set you like and start coding.</p>
+          </div>
+          <div class="row">
+          
+            <div class="col-md-6">
+              <div class="card">
+                <h4>berries (4)</h4>
+                <p>
+                  *.blackberry.homelab.express,<br />
+                  *.blueberry.homelab.express,<br />
+                  *.raspberry.homelab.express,<br />
+                  *.strawberry.homelab.express
+                </p>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="card">
+                <h4>colors (11)</h4>
+                <p>
+                  *.red.homelab.express,<br />
+                  *.orange.homelab.express,<br />
+                  *.yellow.homelab.express,<br />
+                  *.green.homelab.express,<br />
+                  *.blue.homelab.express,<br />
+                  *.purple.homelab.express,<br />
+                  *.pink.homelab.express,<br />
+                  *.brown.homelab.express,<br />
+                  *.black.homelab.express,<br />
+                  *.white.homelab.express,<br />
+                  *.rainbow.homelab.express
+                </p>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="card">
+                <h4>fruits (11)</h4>
+                <p>
+                  *.apple.homelab.express,<br />
+                  *.banana.homelab.express,<br />
+                  *.coconut.homelab.express,<br />
+                  *.lemon.homelab.express,<br />
+                  *.lime.homelab.express,<br />
+                  *.mango.homelab.express,<br />
+                  *.orange.homelab.express,<br />
+                  *.pear.homelab.express,<br />
+                  *.pineapple.homelab.express,<br />
+                  *.plum.homelab.express,<br />
+                  *.pomegranate.homelab.express
+                </p>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="card">
+                <h4>gems (11)</h4>
+                <p>
+                  *.amethyst.homelab.express,<br />
+                  *.beryl.homelab.express,<br />
+                  *.diamond.homelab.express,<br />
+                  *.emerald.homelab.express,<br />
+                  *.garnet.homelab.express,<br />
+                  *.onyx.homelab.express,<br />
+                  *.opal.homelab.express,<br />
+                  *.pearl.homelab.express<br />
+                  *.ruby.homelab.express,<br />
+                  *.sapphire.homelab.express,<br />
+                  *.topaz.homelab.express
+                </p>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="card">
+                <h4>greek (5)</h4>
+                <p>
+                  *.alpha.homelab.express,<br />
+                  *.beta.homelab.express,<br />
+                  *.gamma.homelab.express,<br />
+                  *.delta.homelab.express,<br />
+                  *.epsilon.homelab.express
+                </p>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="card">
+                <h4>marshmallows (9)</h4>
+                <p>
+                  *.heart.homelab.express,<br />
+                  *.star.homelab.express,<br />
+                  *.horseshoe.homelab.express,<br />
+                  *.clover.homelab.express,<br />
+                  *.moon.homelab.express,<br />
+                  *.gold.homelab.express,<br />
+                  *.rainbow.homelab.express,<br />
+                  *.balloon.homelab.express,<br />
+                  *.hat.homelab.express
+                </p>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="card">
+                <h4>names (8)</h4>
+                <p>
+                  *.gomez.homelab.express,<br />
+                  *.morticia.homelab.express,<br />
+                  *.wednesday.homelab.express,<br />
+                  *.puglsey.homelab.express,<br />
+                  *.fester.homelab.express,<br />
+                  *.lurch.homelab.express,<br />
+                  *.thing.homelab.express,<br />
+                  *.itt.homelab.express
+                </p>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="card">
+                <h4>numbers (10)</h4>
+                <p>
+                  *.zero.homelab.express,<br />
+                  *.one.homelab.express,<br />
+                  *.two.homelab.express,<br />
+                  *.three.homelab.express,<br />
+                  *.four.homelab.express,<br />
+                  *.five.homelab.express,<br />
+                  *.six.homelab.express,<br />
+                  *.seven.homelab.express,<br />
+                  *.eight.homelab.express,<br />
+                  *.nine.homelab.express
+                </p>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="card">
+                <h4>nuts (9)</h4>
+                <p>
+                  *.almond.homelab.express,<br />
+                  *.cashew.homelab.express,<br />
+                  *.chestnut.homelab.express,<br />
+                  *.hazelnut.homelab.express,<br />
+                  *.macademia.homelab.express,<br />
+                  *.peanut.homelab.express,<br />
+                  *.pecan.homelab.express,<br />
+                  *.pistachio.homelab.express,<br />
+                  *.walnut.homelab.express
+                </p>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="card">
+                <h4>planets (10)</h4>
+                <p>
+                  *.mercury.homelab.express,<br />
+                  *.venus.homelab.express,<br />
+                  *.earth.homelab.express,<br />
+                  *.mars.homelab.express,<br />
+                  *.jupiter.homelab.express,<br />
+                  *.saturn.homelab.express,<br />
+                  *.uranus.homelab.express,<br />
+                  *.neptune.homelab.express<br />
+                  *.pluto.homelab.express,<br />
+                  *.ceres.homelab.express
+                </p>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="card">
+                <h4>sushi (5)</h4>
+                <p>
+                  *.bass.homelab.express,<br />
+                  *.escolar.homelab.express,<br />
+                  *.salmon.homelab.express,<br />
+                  *.tuna.homelab.express,<br />
+                  *.unagi.homelab.express
+                </p>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="card">
+                <h4>vegan (3)</h4>
+                <p>
+                  *.tempeh.homelab.express,<br />
+                  *.tofu.homelab.express,<br />
+                  *.seitan.homelab.express
+                </p>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="card">
+                <h4>weapons (5)</h4>
+                <p>
+                  *.axe.homelab.express,<br />
+                  *.bow.homelab.express,<br />
+                  *.fist.homelab.express,<br />
+                  *.spear.homelab.express,<br />
+                  *.sword.homelab.express
+                </p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+      <section class="section updates" data-section="section-updates">
+        <div class="container">
+          <div class="section-heading">
+            <h2>automated updates</h2>
+            <div class="line-dec"></div>
+            <p>homelab.express provides a certificate updater to simplify the process of regularly pulling down our updated certificates for your docker environment.</p>
+            <p>this container was created to work with the traefik reverse proxy, but it should work for any TLS provider that supports a certificate with a separate plaintext private key.</p>
+          </div>
+          <div class="row">
+            <div class="container">
+            
+              <div class="code">
+                <div class="row">
+                
+                  <div class="col-md-12">
+                    <h4>docker-compose.yaml example</h4>
+                    <div class="container">
+                      <span>  traefik-cert-updater:</span>
+                      <span>    image: 'cinderblockgames/homelab.express-cert-updater:latest'</span>
+                      <span>    container_name: 'traefik-cert-updater'</span>
+                      <span>    restart: always</span>
+                      <span>    volumes:</span>
+                      <span>      - '/run/homelab/storage/traefik/config/certs.toml:/data/dynamic.toml'</span>
+                      <span>      - '/run/homelab/storage/traefik/config/certs:/data/certs'</span>
+                      <span>    network_mode: bridge</span>
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-12">
+                    <h4>traefik.toml example</h4>
+                    <div class="container">
+                      <span>[entryPoints]</span>
+                      <span>  [entryPoints.web]</span>
+                      <span>    address = ":80"</span>
+                      <span>  [entryPoints.web-secure]</span>
+                      <span>    address = ":443"</span>
+                      <span></span>
+                      <span>[api]</span>
+                      <span>  dashboard = true</span>
+                      <span></span>
+                      <span>[providers.docker]</span>
+                      <span>  exposedByDefault = false</span>
+                      <span></span>
+                      <span>[providers.file]</span>
+                      <span>  watch = true</span>
+                      <span>  directory = "/config"</span>
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-12">
+                    <h4>config/certs.toml example</h4>
+                    <div class="container">
+                      <span>[tls]</span>
+                      <span>  [[tls.certificates]]</span>
+                      <span>    certFile = "/config/certs/wildcard.homelab.express.cer"</span>
+                      <span>    keyFile = "/config/certs/wildcard.homelab.express.key"</span>
+                      <span>    stores = ["default"]</span>
+                      <span></span>
+                      <span>  [tls.stores]</span>
+                      <span>    [tls.stores.default]</span>
+                      <span>      [tls.stores.default.defaultCertificate]</span>
+                      <span>        certFile = "/config/certs/wildcard.homelab.express.cer"</span>
+                      <span>        keyFile = "/config/certs/wildcard.homelab.express.key"</span>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section setup" data-section="section-setup">
+        <div class="container">
+          <div class="section-heading">
+            <h2>get up and running</h2>
+            <div class="line-dec"></div>
+            <p>if you just acquired a new raspberry pi or similar device and are looking to get it stood up as a personal deployment environment, consider using the setup outlined here to get it up and running in no time.</p>
+          </div>
+          <div class="code">
+            <div class="row">
+            
+              <div class="col-md-12">
+                <h4>prep</h4>
+                <p>follow these steps to prepare your device:</p>
+                <ol class="dashes-list">
+                  <li>update the machine's IP address with a Fixed Allocation from your DHCP provider (probably your home router)</li>
+                  <li>set up <a class="obvious-link" href="https://linuxhint.com/install_docker_raspberry_pi-2/">docker and docker-compose</a></li>
+                  <li>run the following commands:
+                    <div class="container">
+                        <span>sudo groupadd homelab</span>
+                        <span>sudo usermod -aG homelab $(whoami)</span>
+                        <span>sudo mkdir /run/homelab -m775</span>
+                        <span>sudo chgrp homelab /run/homelab</span>
+                      </div>
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="col-md-12">
+                <h4>run</h4>
+                <p>once your device is prepped, you can use our script to set up the environment:</p>
+                <ul class="nav nav-tabs justify-content-end">
+                  <li class="nav-item">
+                    <a class="nav-link link-arm active" href="#env-arm" data-target="#env-arm" data-toggle="tab">ARM</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link link-x86" href="#env-x86" data-target="#env-x86" data-toggle="tab">x86</a>
+                  </li>  
+                </ul> 
+                <div class="tab-content clearfix">
+                  <div class="tab-pane active" id="env-arm">
+                    <div class="container">
+                      <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/homelab.express-first.sh</span>
+                      <span>sh homelab.express-first.sh</span>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="env-x86">
+                    <div class="container">
+                      <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/homelab.express-first.sh</span>
+                      <span>sh homelab.express-first.sh</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-12">
+                <h4>manual setup</h4>
+                <p>if you prefer not to use the script, you can replicate its functionality by running the following commands:</p>
+                <ul class="nav nav-tabs justify-content-end">
+                  <li class="nav-item">
+                    <a class="nav-link link-arm active" href="#env-manual-arm" data-target="#env-manual-arm" data-toggle="tab">ARM</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link link-x86" href="#env-manual-x86" data-target="#env-manual-x86" data-toggle="tab">x86</a>
+                  </li>  
+                </ul> 
+                <div class="tab-content clearfix">
+                  <div class="tab-pane active" id="env-manual-arm">
+                    <div class="container">
+                      <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/first/compose/infrastructure/docker-compose.yaml -O /run/homelab/compose/infrastructure/docker-compose.yaml</span>
+                      <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/first/storage/traefik/traefik.toml -O /run/homelab/storage/traefik/traefik.toml</span>
+                      <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/first/storage/traefik/config/certs.toml -O /run/homelab/storage/traefik/config/certs.toml</span>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="env-manual-x86">
+                    <div class="container">
+                      <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/first/compose/infrastructure/docker-compose.yaml -O /run/homelab/compose/infrastructure/docker-compose.yaml</span>
+                      <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/first/storage/traefik/traefik.toml -O /run/homelab/storage/traefik/traefik.toml</span>
+                      <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/first/storage/traefik/config/certs.toml -O /run/homelab/storage/traefik/config/certs.toml</span>
+                    </div>
+                  </div>
+                </div>
+                <p>once you've copied the files over, make sure to update <span class="file">/run/homelab/compose/infrastructure/docker-compose.yaml</span> to replace ${hostname} with your machine's hostname.</p>
+              </div>
+              
+              <div class="col-md-12">
+                <h4>adding containers</h4>
+                <p>when standing up additional containers, all you need to do to have them served correctly by traefik behind our certificate is to ensure the container is on the same network as traefik and add the traefik labels:</p>
+                <div class="container">
+                  <span>    network_mode: bridge</span>
+                  <span>    labels:</span>
+                  <span>      - 'traefik.enable=true'</span>
+                  <span>      - 'traefik.http.routers.{your-container}.rule=Host(`{your-subdomain}.homelab.express`)'</span>
+                  <span>      - 'traefik.http.routers.{your-container}.entrypoints=web-secure'</span>
+                  <span>      - 'traefik.http.routers.{your-container}.tls'</span>
+                  <span>      - 'traefik.http.services.{your-container}.loadbalancer.server.port={your-port}'</span>
+                </div>
+                <p>here is an example with the <a class="obvious-link" href="https://hub.docker.com/r/containous/whoami">whoami</a> container, which stands up a lightweight demo server:</p>
+                <div class="container">
+                  <span>version: '3.8'</span>
+                  <span></span>
+                  <span>services:</span>
+                  <span>  whoami:</span>
+                  <span>    image: 'containous/whoami'</span>
+                  <span>    container_name: whoami</span>
+                  <span>    restart: always</span>
+                  <span>    network_mode: bridge</span>
+                  <span>    labels:</span>
+                  <span>      - 'traefik.enable=true'</span>
+                  <span>      - 'traefik.http.routers.whoami.rule=Host(`whoami.homelab.express`)'</span>
+                  <span>      - 'traefik.http.routers.whoami.entrypoints=web-secure'</span>
+                  <span>      - 'traefik.http.routers.whoami.tls'</span>
+                  <span>      - 'traefik.http.services.whoami.loadbalancer.server.port=80'</span>
+                </div>
+              </div>
+              
+              <div class="col-md-12">
+                <h4>adding devices</h4>
+                <p>adding additional devices is the same as setting up the first one, except the script to set up the environment is slightly different:</p>
+                <ul class="nav nav-tabs justify-content-end">
+                  <li class="nav-item">
+                    <a class="nav-link link-arm active" href="#env-add-arm" data-target="#env-add-arm" data-toggle="tab">ARM</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link link-x86" href="#env-add-x86" data-target="#env-add-x86" data-toggle="tab">x86</a>
+                  </li>  
+                </ul> 
+                <div class="tab-content clearfix">
+                  <div class="tab-pane active" id="env-add-arm">
+                    <div class="container">
+                      <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/homelab.express-add-on.sh</span>
+                      <span>sh homelab.express-add-on.sh</span>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="env-add-x86">
+                    <div class="container">
+                      <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/homelab.express-add-on.sh</span>
+                      <span>sh homelab.express-add-on.sh</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-12">
+                <h4>manually adding devices</h4>
+                <p>if you prefer not to use the script, the only difference between the <span class="file">first</span> script and the <span class="file">add-on</span> script is that we use portainer agent instead of portainer in <span class="file">/run/homelab/compose/infrastructure/docker-compose.yaml</span>:</p>
+                <div class="container">
+                  <span>  portainer-agent:</span>
+                  <span>    image: 'portainer/agent'</span>
+                  <span>    container_name: 'portainer-agent'</span>
+                  <span>    restart: always</span>
+                  <span>    ports:</span>
+                  <span>      - '9001:9001'</span>
+                  <span>    volumes:</span>
+                  <span>      - '/var/run/docker.sock:/var/run/docker.sock'</span>
+                  <span>      - '/var/lib/docker/volumes:/var/lib/docker/volumes'</span>
+                  <span>    network_mode: bridge</span>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/site.js"></script>
+    <script>
+      //according to loftblog tut
+      $(".main-menu li:first").addClass("active");
+
+      var showSection = function showSection(section, isAnimate) {
+        var direction = section.replace(/#/, ""),
+          reqSection = $(".section").filter(
+            '[data-section="' + direction + '"]'
+          ),
+          reqSectionPos = reqSection.offset().top - 0;
+
+        if (isAnimate) {
+          $("body, html").animate(
+            {
+              scrollTop: reqSectionPos
+            },
+            800
+          );
+        } else {
+          $("body, html").scrollTop(reqSectionPos);
+        }
+      };
+
+      var checkSection = function checkSection() {
+        $(".section").each(function() {
+          var $this = $(this),
+            topEdge = $this.offset().top - 80,
+            bottomEdge = topEdge + $this.height(),
+            wScroll = $(window).scrollTop();
+          if (topEdge < wScroll && bottomEdge > wScroll) {
+            var currentId = $this.data("section"),
+              reqLink = $("a").filter("[href*=\\#" + currentId + "]");
+            reqLink
+              .closest("li")
+              .addClass("active")
+              .siblings()
+              .removeClass("active");
+          }
+        });
+      };
+
+      $(".main-menu").on("click", "a", function(e) {
+        e.preventDefault();
+        showSection($(this).attr("href"), true);
+      });
+
+      $(window).scroll(function() {
+        checkSection();
+      });
+    </script>
+  </body>
+</html>
