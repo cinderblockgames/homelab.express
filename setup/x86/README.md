@@ -37,7 +37,7 @@ Head to `/run/homelab/compose/infrastructure/` and run `docker-compose up -d`.. 
 If you've got your new lab's IP set in your hosts file, head to one of the following URLs to check out your new environment:
 - https://manage.homelab.express
   - you will be prompted to set a password for access to portainer
-- https://{hostname}
+- https://{hostname}.homelab.express
   - replace {hostname} with the hostname of your machine to view the traefik dashboard
 
 Congratulations; you've hit the ground running!
