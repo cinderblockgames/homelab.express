@@ -13,7 +13,7 @@ on:
 jobs:
   revoke-cert:
     runs-on: ubuntu-latest
-    container: certbot/certbot
+    container: certbot/certbot:nightly
     steps:
       - name: Copy certificate public chain
         uses: DamianReeves/write-file-action@v1.0
