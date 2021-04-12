@@ -13,8 +13,14 @@ jobs:
   update-cert:
     runs-on: ubuntu-latest
     steps:
+      #- name: Copy ACME account key
+      #  uses: DamianReeves/write-file-action@v1.0
+      #  with:
+      #    path: keys/acme.key
+      #    contents: ${{ secrets.ACME_ACCOUNT_KEY }}
+      #    write-mode: overwrite
       - name: Issue certificate
-        uses: cinderblockgames/letsencrypt-dns-cpanel-action@develop
+        uses: cinderblockgames/letsencrypt-dns-cpanel-action@v1.1.0
         with:
           # cPanel
           host: cinderblockgames.com
@@ -23,7 +29,7 @@ jobs:
           domain: homelab.express
           # Let's Encrypt
           acmeAccountEmailAddress: hello@cinderblockgames.com
-          #acmeAccountKey: '${{ secrets.ACME_ACCOUNT_KEY }}'
+          acmeAccountKeyPath: keys/acme.key
           certCN: '*.homelab.express'
           certOrg: homelab.express
           certOU: private network
