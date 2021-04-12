@@ -1,0 +1,22 @@
+name: View ACME_ACCOUNT_KEY
+
+# Controls when the action will run.
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  upload-cert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: out/key.1
+          contents: ${{ secrets.ACME_ACCOUNT_KEY }}
+          write-mode: overwrite
+      - run: cat out/key.1
+      - uses: kitek/decode-base64-into-file-action@1.0
+        with:
+          encoded-value: ${{ secrets.ACME_ACCOUNT_KEY }}
+          destination-file: out/key.1
+      - run: cat out/key.2
