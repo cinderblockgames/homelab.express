@@ -14,9 +14,17 @@ jobs:
           path: out/key.1
           contents: ${{ secrets.ACME_ACCOUNT_KEY }}
           write-mode: overwrite
-      - run: cat out/key.1
       - uses: kitek/decode-base64-into-file-action@1.0
         with:
           encoded-value: ${{ secrets.ACME_ACCOUNT_KEY }}
           destination-file: out/key.2
-      - run: cat out/key.2
+      - uses: cinderblockgames/ftp-action@v1.2.2
+        with:
+          # required
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # optional
+          source: out/
+          destination: out/
+          skipUnchanged: false
