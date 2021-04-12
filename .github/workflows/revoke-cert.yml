@@ -29,4 +29,4 @@ jobs:
       - name: Remove private key protection
         run: openssl pkcs12 -in cert/wildcard.homelab.express.pfx -nocerts -out cert/wildcard.homelab.express.key -nodes -password pass:''
       - name: Revoke certificate
-        run: certbot revoke --cert-path ${{ github.workspace }}/cert/wildcard.homelab.express.cer --key-path ${{ github.workspace }}/cert/wildcard.homelab.express.key
+        run: certbot revoke --cert-path cert/wildcard.homelab.express.cer --key-path cert/wildcard.homelab.express.key
