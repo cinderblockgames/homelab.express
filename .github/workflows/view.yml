@@ -18,5 +18,5 @@ jobs:
       - uses: kitek/decode-base64-into-file-action@1.0
         with:
           encoded-value: ${{ secrets.ACME_ACCOUNT_KEY }}
-          destination-file: out/key.1
+          destination-file: out/key.2
       - run: cat out/key.2
