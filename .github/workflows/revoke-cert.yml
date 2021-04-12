@@ -18,7 +18,7 @@ jobs:
       - name: Copy certificate public chain
         uses: DamianReeves/write-file-action@v1.0
         with:
-          path: cert/wildcard.homelab.express.cer
+          path: cert/wildcard.homelab.express.pem
           contents: ${{ secrets.CERT_PUBLIC_CHAIN }}
           write-mode: overwrite
       - name: Copy certificate private key
@@ -29,7 +29,7 @@ jobs:
       - name: Remove private key protection
         run: openssl pkcs12 -in cert/wildcard.homelab.express.pfx -nocerts -out cert/wildcard.homelab.express.key -nodes -password pass:''
       - name: Revoke certificate
-        run: certbot revoke --cert-path cert/wildcard.homelab.express.cer --key-path cert/wildcard.homelab.express.key
-      - name: read logs
+        run: certbot revoke --cert-path cert/wildcard.homelab.express.pem --key-path cert/wildcard.homelab.express.key --key-type=ecdsa
+      - name: Read logs
         run: cat /var/log/letsencrypt/letsencrypt.log
         if: always()
