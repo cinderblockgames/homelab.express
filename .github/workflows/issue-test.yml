@@ -25,7 +25,7 @@ jobs:
           domain: homelab.express
           # Let's Encrypt
           acmeAccountEmailAddress: hello@cinderblockgames.com
-          acmeAccountKey: keys/acme.key
+          acmeAccountKeyPath: keys/acme.key
           certCN: '*.homelab.express'
           certOrg: homelab.express
           certOU: private network
