@@ -30,3 +30,6 @@ jobs:
         run: openssl pkcs12 -in cert/wildcard.homelab.express.pfx -nocerts -out cert/wildcard.homelab.express.key -nodes -password pass:''
       - name: Revoke certificate
         run: certbot revoke --cert-path cert/wildcard.homelab.express.cer --key-path cert/wildcard.homelab.express.key
+      - name: read logs
+        run: cat /var/log/letsencrypt/letsencrypt.log
+        if: always()
