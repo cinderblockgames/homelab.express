@@ -26,17 +26,17 @@ jobs:
           path: 'secrets/cert.cer'
           contents: ${{ secrets.CERT_PUBLIC_CHAIN_2 }}
           write-mode: overwrite
-      #- name: Copy certificate private key
-      #  uses: DamianReeves/write-file-action@v1.0
-      #  with:
-      #    path: 'secrets/cert.key'
-      #    contents: ${{ secrets.CERT_PRIVATE_KEY_2 }}
-      #    write-mode: overwrite
+      - name: Copy certificate private key
+        uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: 'secrets/cert.key'
+          contents: ${{ secrets.CERT_PRIVATE_KEY_2 }}
+          write-mode: overwrite
       - name: Revoke certificate
         uses: cinderblockgames/letsencrypt-revoke-action@develop
         with:
           # REQUIRED
           certChainPath: 'secrets/cert.cer'
-          acmeAccountKeyPath: 'secrets/acme.key'
-      #    certKeyPath: 'secrets/cert.key'
+      #    acmeAccountKeyPath: 'secrets/acme.key'
+          certKeyPath: 'secrets/cert.key'
           reason: 'KeyCompromise'
