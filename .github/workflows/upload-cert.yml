@@ -4,7 +4,7 @@ name: Upload Certificate
 on:
   # Run after the cert has been created
   workflow_run:
-    workflows: ["Update Certificate"]
+    workflows: ["Issue Certificate"]
     types: ["completed"]
       
   # Allows you to run this workflow manually from the Actions tab
