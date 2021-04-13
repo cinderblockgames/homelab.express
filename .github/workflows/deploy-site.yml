@@ -13,7 +13,7 @@ jobs:
       uses: actions/checkout@v2.3.4
   
     - name: Deploy site
-      uses: cinderblockgames/ftp-action@v1.2.0
+      uses: cinderblockgames/ftp-action@v1.2.2
       with:
         # required
         server: ${{ secrets.FTP_SERVER }}
