@@ -27,11 +27,10 @@ jobs:
           contents: ${{ secrets.CERT_PUBLIC_CHAIN_2 }}
           write-mode: overwrite
       - name: Copy certificate private key
-        uses: DamianReeves/write-file-action@v1.0
+        uses: kitek/decode-base64-into-file-action@1.0
         with:
-          path: 'secrets/cert.pfx'
-          contents: ${{ secrets.CERT_PRIVATE_KEY_2 }}
-          write-mode: overwrite
+          encoded-value: ${{ secrets.CERT_PRIVATE_KEY_2 }}
+          destination-file: secrets/cert.pfx
       - name: Remove private key protection
         run: openssl pkcs12 -in ${{ github.workspace }}/secrets/cert.pfx -nocerts -out ${{ github.workspace }}/secrets/cert.key -nodes -password pass:''
       - name: Revoke certificate
