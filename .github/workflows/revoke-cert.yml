@@ -30,10 +30,10 @@ jobs:
       #  uses: DamianReeves/write-file-action@v1.0
       #  with:
       #    path: 'secrets/cert.key'
-      #    contents: ${{ secrets.CERT_PRIVATE_KEY }}
+      #    contents: ${{ secrets.CERT_PRIVATE_KEY_2 }}
       #    write-mode: overwrite
       - name: Revoke certificate
-        uses: cinderblockgames/letsencrypt-revoke-action@v1.0.0
+        uses: cinderblockgames/letsencrypt-revoke-action@develop
         with:
           # REQUIRED
           certChainPath: 'secrets/cert.cer'
