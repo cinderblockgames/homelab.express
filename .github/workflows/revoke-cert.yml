@@ -34,7 +34,7 @@ jobs:
       #- name: Remove private key protection
       #  run: openssl pkcs12 -in ${{ github.workspace }}/secrets/cert.pfx -nocerts -out ${{ github.workspace }}/secrets/cert.key -nodes -password pass:''
       - name: Revoke certificate
-        uses: cinderblockgames/letsencrypt-revoke-action@develop
+        uses: cinderblockgames/letsencrypt-revoke-action@v1.0.0
         with:
           # REQUIRED
           acmeAccountKeyPath: 'secrets/acme.key'
