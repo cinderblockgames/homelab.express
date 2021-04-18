@@ -449,7 +449,7 @@ https://templatemo.com/tm-531-reflux
                             <ol class="dashes-list">
                               <li>update the machine's IP address with a Fixed Allocation from your DHCP provider (probably your home router)</li>
                               <li>set up <a class="obvious-link" href="https://linuxhint.com/install_docker_raspberry_pi-2/">docker and docker-compose</a></li>
-                              <li>run the following commands:
+                              <li>run the following commands, then log out and back in:
                                 <div class="container">
                                   <span>sudo groupadd homelab</span>
                                   <span>sudo usermod -aG homelab $(whoami)</span>
@@ -469,8 +469,8 @@ https://templatemo.com/tm-531-reflux
                               </li>
                               <li class="nav-item">
                                 <a class="nav-link link-x86" href="#env-x86" data-target="#env-x86" data-toggle="tab">x86</a>
-                              </li>  
-                            </ul> 
+                              </li>
+                            </ul>
                             <div class="tab-content clearfix">
                               <div class="tab-pane active" id="env-arm">
                                 <div class="container">
@@ -502,8 +502,8 @@ https://templatemo.com/tm-531-reflux
                               </li>
                               <li class="nav-item">
                                 <a class="nav-link link-x86" href="#env-manual-x86" data-target="#env-manual-x86" data-toggle="tab">x86</a>
-                              </li>  
-                            </ul> 
+                              </li>
+                            </ul>
                             <div class="tab-content clearfix">
                               <div class="tab-pane active" id="env-manual-arm">
                                 <div class="container">
@@ -563,8 +563,8 @@ https://templatemo.com/tm-531-reflux
                               </li>
                               <li class="nav-item">
                                 <a class="nav-link link-x86" href="#env-add-x86" data-target="#env-add-x86" data-toggle="tab">x86</a>
-                              </li>  
-                            </ul> 
+                              </li>
+                            </ul>
                             <div class="tab-content clearfix">
                               <div class="tab-pane active" id="env-add-arm">
                                 <div class="container">
@@ -610,17 +610,18 @@ https://templatemo.com/tm-531-reflux
                             <ol class="dashes-list">
                               <li>update the machine's IP address with a Fixed Allocation from your DHCP provider (probably your home router)</li>
                               <li>set up <a class="obvious-link" href="https://linuxhint.com/install_docker_raspberry_pi-2/">docker and docker-compose</a></li>
-                              <li>run the following commands:
+                              <li>run the following commands, then log out and back in:
                                 <div class="container">
                                   <span>sudo groupadd homelab</span>
                                   <span>sudo usermod -aG homelab $(whoami)</span>
                                   <span>sudo mkdir /run/homelab -m775</span>
                                   <span>sudo chgrp homelab /run/homelab</span>
                                   <span>docker swarm init</span>
+                                  <span>docker network create --opt encrypted --driver overlay swarm</span>
                                 </div>
                               </li>
                             </ol>
-                            <p>if your device has multiple IP addresses assigned to it, you will need to specify the static IP address you set in the first step by including the <span class="command">--advertise-addr</span> option in the final <span class="command">docker swarm init</span> command.</p>
+                            <p>if your device has multiple IP addresses assigned to it, you will need to specify the static IP address you set in the first step by including the <span class="command">--advertise-addr</span> option in the <span class="command">docker swarm init</span> command.</p>
                           </div>
                           
                           <div class="col-md-12">
@@ -628,32 +629,32 @@ https://templatemo.com/tm-531-reflux
                             <p>once your device is prepped, you can use our script to set up the environment:</p>
                             <ul class="nav nav-tabs justify-content-end">
                               <li class="nav-item">
-                                <a class="nav-link link-arm active" href="#env-arm" data-target="#env-arm" data-toggle="tab">ARM</a>
+                                <a class="nav-link link-arm active" href="#swarm-arm" data-target="#swarm-arm" data-toggle="tab">ARM</a>
                               </li>
                               <li class="nav-item">
-                                <a class="nav-link link-x86" href="#env-x86" data-target="#env-x86" data-toggle="tab">x86</a>
-                              </li>  
-                            </ul> 
+                                <a class="nav-link link-x86" href="#swarm-x86" data-target="#swarm-x86" data-toggle="tab">x86</a>
+                              </li>
+                            </ul>
                             <div class="tab-content clearfix">
-                              <div class="tab-pane active" id="env-arm">
+                              <div class="tab-pane active" id="swarm-arm">
                                 <div class="container">
-                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/homelab.express-first.sh</span>
-                                  <span>sh homelab.express-first.sh</span>
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/homelab.express-swarm.sh</span>
+                                  <span>sh homelab.express-swarm.sh</span>
                                 </div>
                               </div>
-                              <div class="tab-pane" id="env-x86">
+                              <div class="tab-pane" id="swarm-x86">
                                 <div class="container">
-                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/homelab.express-first.sh</span>
-                                  <span>sh homelab.express-first.sh</span>
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/homelab.express-swarm.sh</span>
+                                  <span>sh homelab.express-swarm.sh</span>
                                 </div>
                               </div>
                             </div>
-                            <p>then head to <span class="file">/run/homelab/compose/infrastructure/</span> and start your infrastructure containers:</p>
+                            <p>then head to <span class="file">/run/homelab/compose/infrastructure/</span> and start your infrastructure services:</p>
                             <div class="container">
-                              <span>docker-compose up -d</span>
+                              <span>docker stack deploy -c docker-compose.yaml infrastructure</span>
                             </div>
                             <p>as long as you have your new lab's IP set in your hosts file, you can head to <a class="obvious-link" href="https://manage.homelab.express">https://manage.homelab.express</a>, set up a password, and explore portainer.</p>
-                            <p>you can also head to https://{hostname}.homelab.express (replacing {hostname} with the hostname of your device) to view the traefik dashboard.</p>
+                            <p>you can also head to <a class="obvious-link" href="https://monitor.homelab.express">https://monitor.homelab.express</a> to view the traefik dashboard.</p>
                           </div>
                           
                           <div class="col-md-12">
@@ -661,42 +662,48 @@ https://templatemo.com/tm-531-reflux
                             <p>if you prefer not to use the script, you can replicate its functionality by running the following commands:</p>
                             <ul class="nav nav-tabs justify-content-end">
                               <li class="nav-item">
-                                <a class="nav-link link-arm active" href="#env-manual-arm" data-target="#env-manual-arm" data-toggle="tab">ARM</a>
+                                <a class="nav-link link-arm active" href="#swarm-manual-arm" data-target="#swarm-manual-arm" data-toggle="tab">ARM</a>
                               </li>
                               <li class="nav-item">
-                                <a class="nav-link link-x86" href="#env-manual-x86" data-target="#env-manual-x86" data-toggle="tab">x86</a>
-                              </li>  
-                            </ul> 
+                                <a class="nav-link link-x86" href="#swarm-manual-x86" data-target="#swarm-manual-x86" data-toggle="tab">x86</a>
+                              </li>
+                            </ul>
                             <div class="tab-content clearfix">
-                              <div class="tab-pane active" id="env-manual-arm">
+                              <div class="tab-pane active" id="swarm-manual-arm">
                                 <div class="container">
-                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/first/compose/infrastructure/docker-compose.yaml -O /run/homelab/compose/infrastructure/docker-compose.yaml</span>
-                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/first/storage/traefik/traefik.toml -O /run/homelab/storage/traefik/traefik.toml</span>
-                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/first/storage/traefik/config/certs.toml -O /run/homelab/storage/traefik/config/certs.toml</span>
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/swarm/compose/infrastructure/docker-compose.yaml -O /run/homelab/compose/infrastructure/docker-compose.yaml</span>
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/swarm/storage/traefik/traefik.toml -O /run/homelab/storage/traefik/traefik.toml</span>
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/swarm/storage/traefik/config/certs.toml -O /run/homelab/storage/traefik/config/certs.toml</span>
                                 </div>
                               </div>
-                              <div class="tab-pane" id="env-manual-x86">
+                              <div class="tab-pane" id="swarm-manual-x86">
                                 <div class="container">
-                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/first/compose/infrastructure/docker-compose.yaml -O /run/homelab/compose/infrastructure/docker-compose.yaml</span>
-                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/first/storage/traefik/traefik.toml -O /run/homelab/storage/traefik/traefik.toml</span>
-                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/first/storage/traefik/config/certs.toml -O /run/homelab/storage/traefik/config/certs.toml</span>
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/swarm/compose/infrastructure/docker-compose.yaml -O /run/homelab/compose/infrastructure/docker-compose.yaml</span>
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/swarm/storage/traefik/traefik.toml -O /run/homelab/storage/traefik/traefik.toml</span>
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/swarm/storage/traefik/config/certs.toml -O /run/homelab/storage/traefik/config/certs.toml</span>
                                 </div>
                               </div>
                             </div>
-                            <p>once you've copied the files over, make sure to update <span class="file">/run/homelab/compose/infrastructure/docker-compose.yaml</span> to replace ${hostname} with your machine's hostname.</p>
                           </div>
                           
                           <div class="col-md-12">
                             <h4>adding services</h4>
                             <p>when standing up additional services, all you need to do to have them served correctly by traefik behind our certificate is to ensure the service is on the same network as traefik and add the traefik labels:</p>
                             <div class="container">
-                              <span>    network_mode: bridge</span>
-                              <span>    labels:</span>
-                              <span>      - 'traefik.enable=true'</span>
-                              <span>      - 'traefik.http.routers.{your-container}.rule=Host(`{your-subdomain}.homelab.express`)'</span>
-                              <span>      - 'traefik.http.routers.{your-container}.entrypoints=web-secure'</span>
-                              <span>      - 'traefik.http.routers.{your-container}.tls'</span>
-                              <span>      - 'traefik.http.services.{your-container}.loadbalancer.server.port={your-port}'</span>
+                              <span>    networks: [swarm]</span>
+                              <span>    deploy:</span>
+                              <span>      mode: replicated</span>
+                              <span>      replicas: 1</span>
+                              <span>      labels:</span>
+                              <span>        - 'traefik.enable=true'</span>
+                              <span>        - 'traefik.http.routers.{your-container}.rule=Host(`{your-subdomain}.homelab.express`)'</span>
+                              <span>        - 'traefik.http.routers.{your-container}.entrypoints=web-secure'</span>
+                              <span>        - 'traefik.http.routers.{your-container}.tls'</span>
+                              <span>        - 'traefik.http.services.{your-container}.loadbalancer.server.port={your-port}'</span>
+                              <span></span>
+                              <span>networks:</span>
+                              <span>  swarm:</span>
+                              <span>    external: true</span>
                             </div>
                             <p>here is an example with the <a class="obvious-link" href="https://hub.docker.com/r/containous/whoami">whoami</a> container, which stands up a lightweight demo server:</p>
                             <div class="container">
@@ -705,15 +712,20 @@ https://templatemo.com/tm-531-reflux
                               <span>services:</span>
                               <span>  whoami:</span>
                               <span>    image: 'containous/whoami'</span>
-                              <span>    container_name: whoami</span>
-                              <span>    restart: always</span>
-                              <span>    network_mode: bridge</span>
-                              <span>    labels:</span>
-                              <span>      - 'traefik.enable=true'</span>
-                              <span>      - 'traefik.http.routers.whoami.rule=Host(`whoami.homelab.express`)'</span>
-                              <span>      - 'traefik.http.routers.whoami.entrypoints=web-secure'</span>
-                              <span>      - 'traefik.http.routers.whoami.tls'</span>
-                              <span>      - 'traefik.http.services.whoami.loadbalancer.server.port=80'</span>
+                              <span>    networks: [swarm]</span>
+                              <span>    deploy:</span>
+                              <span>      mode: replicated</span>
+                              <span>      replicas: 1</span>
+                              <span>      labels:</span>
+                              <span>        - 'traefik.enable=true'</span>
+                              <span>        - 'traefik.http.routers.whoami.rule=Host(`whoami.homelab.express`)'</span>
+                              <span>        - 'traefik.http.routers.whoami.entrypoints=web-secure'</span>
+                              <span>        - 'traefik.http.routers.whoami.tls'</span>
+                              <span>        - 'traefik.http.services.whoami.loadbalancer.server.port=80'</span>
+                              <span></span>
+                              <span>networks:</span>
+                              <span>  swarm:</span>
+                              <span>    external: true</span>
                             </div>
                           </div>
                           
@@ -727,8 +739,8 @@ https://templatemo.com/tm-531-reflux
                               </li>
                               <li class="nav-item">
                                 <a class="nav-link link-manager" href="#swarm-add-manager" data-target="#swarm-add-manager" data-toggle="tab">manager</a>
-                              </li>  
-                            </ul> 
+                              </li>
+                            </ul>
                             <div class="tab-content clearfix">
                               <div class="tab-pane active" id="swarm-add-worker">
                                 <div class="container">
