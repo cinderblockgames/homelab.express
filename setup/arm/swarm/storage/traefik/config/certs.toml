@@ -1,0 +1,11 @@
+[tls]
+  [[tls.certificates]]
+    certFile = "/config/certs/wildcard.homelab.express.cer"
+    keyFile = "/config/certs/wildcard.homelab.express.key"
+    stores = ["default"]
+
+  [tls.stores]
+    [tls.stores.default]
+      [tls.stores.default.defaultCertificate]
+        certFile = "/config/certs/wildcard.homelab.express.cer"
+        keyFile = "/config/certs/wildcard.homelab.express.key"

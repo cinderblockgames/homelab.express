@@ -1,0 +1,16 @@
+[entryPoints]
+  [entryPoints.web]
+    address = ":80"
+  [entryPoints.web-secure]
+    address = ":443"
+
+[api]
+  dashboard = true
+
+[providers.docker]
+  exposedByDefault = false
+  swarmMode = true
+
+[providers.file]
+  watch = true
+  directory = "/config"
