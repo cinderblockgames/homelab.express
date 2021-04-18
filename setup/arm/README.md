@@ -3,6 +3,8 @@ If this is the first machine in your network, copy the contents of the **first**
 
 If you are adding an additional machine into your network, copy the contents of the **add-on** directory to **/run/homelab**.
 
+If you are starting a new swarm, copy the contents of the **swarm** directory to **/run/homelab**.
+
 ## Considerations
 Before copying anything, make sure your machine is set up correctly:
 - update the machine's IP address with a Fixed Allocation from your DHCP provider (probably your home router)
