@@ -3,6 +3,8 @@ If this is the first machine in your network, copy the contents of the **first**
 
 If you are adding an additional machine into your network, copy the contents of the **add-on** directory to **/run/homelab**.
 
+If you are starting a new swarm, copy the contents of the **swarm** directory to **/run/homelab**.
+
 ## Considerations
 Before copying anything, make sure your machine is set up correctly:
 - update the machine's IP address with a Fixed Allocation from your DHCP provider (probably your home router)
@@ -13,7 +15,7 @@ Before copying anything, make sure your machine is set up correctly:
   ```
 - log out and back in for the above to take effect
 
-*Once you've copied the files over, make sure to update **/run/homelab/compose/infrastructure/docker-compose.yaml** to replace **${hostname}** with your machine's hostname.*
+*Once you've copied the files over, make sure to update **/run/homelab/compose/infrastructure/docker-compose.yaml** to replace **${hostname}** with your machine's hostname (unless you are setting up a swarm).*
 
 ## The Easy Button
 If you're setting up a new machine and want to skip the hassle of copying the files down yourself, just run the code here to do it for you:
