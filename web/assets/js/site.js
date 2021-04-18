@@ -45,4 +45,26 @@
       });
     }
   });
+  
+  // Keep standalone/swarm selection in sync across all nav-tabs
+  $("a.nav-link.link-standalone").on("click", function(e, triggered) {
+    if (!triggered) { // prevent circular calls
+      var links = $("a.nav-link.link-standalone");
+      links.splice($.inArray(e.target, links), 1); // remove current item
+      
+      $(links).each(function(index, element) {
+        $(element).trigger("click", true);
+      });
+    }
+  });
+  $("a.nav-link.link-swarm").on("click", function(e, triggered) {
+    if (!triggered) { // prevent circular calls
+      var links = $("a.nav-link.link-swarm");
+      links.splice($.inArray(e.target, links), 1); // remove current item
+      
+      $(links).each(function(index, element) {
+        $(element).trigger("click", true);
+      });
+    }
+  });
 })(jQuery);
