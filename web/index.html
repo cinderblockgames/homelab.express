@@ -422,166 +422,339 @@ https://templatemo.com/tm-531-reflux
             <div class="line-dec"></div>
             <p>if you just acquired a new raspberry pi or similar device and are looking to get it stood up as a personal deployment environment, consider using the setup outlined here to get it up and running in no time.</p>
           </div>
-          <div class="code">
-            <div class="row">
+          
+          <div class="row">
+            <div class="container">
             
-              <div class="col-md-12">
-                <h4>prep</h4>
-                <p>follow these steps to prepare your device:</p>
-                <ol class="dashes-list">
-                  <li>update the machine's IP address with a Fixed Allocation from your DHCP provider (probably your home router)</li>
-                  <li>set up <a class="obvious-link" href="https://linuxhint.com/install_docker_raspberry_pi-2/">docker and docker-compose</a></li>
-                  <li>run the following commands:
-                    <div class="container">
-                        <span>sudo groupadd homelab</span>
-                        <span>sudo usermod -aG homelab $(whoami)</span>
-                        <span>sudo mkdir /run/homelab -m775</span>
-                        <span>sudo chgrp homelab /run/homelab</span>
-                      </div>
-                  </li>
-                </ul>
-              </div>
-              
-              <div class="col-md-12">
-                <h4>run</h4>
-                <p>once your device is prepped, you can use our script to set up the environment:</p>
-                <ul class="nav nav-tabs justify-content-end">
-                  <li class="nav-item">
-                    <a class="nav-link link-arm active" href="#env-arm" data-target="#env-arm" data-toggle="tab">ARM</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link link-x86" href="#env-x86" data-target="#env-x86" data-toggle="tab">x86</a>
-                  </li>  
-                </ul> 
-                <div class="tab-content clearfix">
-                  <div class="tab-pane active" id="env-arm">
-                    <div class="container">
-                      <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/homelab.express-first.sh</span>
-                      <span>sh homelab.express-first.sh</span>
+              <div class="code">
+                <div class="row">
+                
+                  <div class="col-md-12">
+                    <ul class="nav nav-tabs justify-content-end tabbed-section">
+                      <li class="nav-item">
+                        <a class="nav-link link-standalone active" href="#env-standalone" data-target="#env-standalone" data-toggle="tab">standalone</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link link-swarm" href="#env-swarm" data-target="#env-swarm" data-toggle="tab">swarm</a>
+                      </li>  
+                    </ul>
+                    <div class="tab-content clearfix">
+                    
+                      <div class="tab-pane active" id="env-standalone">
+                        <div class="row">
+                        
+                          <div class="col-md-12">
+                            <h4>prep</h4>
+                            <p>follow these steps to prepare your device:</p>
+                            <ol class="dashes-list">
+                              <li>update the machine's IP address with a Fixed Allocation from your DHCP provider (probably your home router)</li>
+                              <li>set up <a class="obvious-link" href="https://linuxhint.com/install_docker_raspberry_pi-2/">docker and docker-compose</a></li>
+                              <li>run the following commands:
+                                <div class="container">
+                                  <span>sudo groupadd homelab</span>
+                                  <span>sudo usermod -aG homelab $(whoami)</span>
+                                  <span>sudo mkdir /run/homelab -m775</span>
+                                  <span>sudo chgrp homelab /run/homelab</span>
+                                </div>
+                              </li>
+                            </ol>
+                          </div>
+                          
+                          <div class="col-md-12">
+                            <h4>run</h4>
+                            <p>once your device is prepped, you can use our script to set up the environment:</p>
+                            <ul class="nav nav-tabs justify-content-end">
+                              <li class="nav-item">
+                                <a class="nav-link link-arm active" href="#env-arm" data-target="#env-arm" data-toggle="tab">ARM</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link link-x86" href="#env-x86" data-target="#env-x86" data-toggle="tab">x86</a>
+                              </li>  
+                            </ul> 
+                            <div class="tab-content clearfix">
+                              <div class="tab-pane active" id="env-arm">
+                                <div class="container">
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/homelab.express-first.sh</span>
+                                  <span>sh homelab.express-first.sh</span>
+                                </div>
+                              </div>
+                              <div class="tab-pane" id="env-x86">
+                                <div class="container">
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/homelab.express-first.sh</span>
+                                  <span>sh homelab.express-first.sh</span>
+                                </div>
+                              </div>
+                            </div>
+                            <p>then head to <span class="file">/run/homelab/compose/infrastructure/</span> and start your infrastructure containers:</p>
+                            <div class="container">
+                              <span>docker-compose up -d</span>
+                            </div>
+                            <p>as long as you have your new lab's IP set in your hosts file, you can head to <a class="obvious-link" href="https://manage.homelab.express">https://manage.homelab.express</a>, set up a password, and explore portainer.</p>
+                            <p>you can also head to https://{hostname}.homelab.express (replacing {hostname} with the hostname of your device) to view the traefik dashboard.</p>
+                          </div>
+                          
+                          <div class="col-md-12">
+                            <h4>manual setup</h4>
+                            <p>if you prefer not to use the script, you can replicate its functionality by running the following commands:</p>
+                            <ul class="nav nav-tabs justify-content-end">
+                              <li class="nav-item">
+                                <a class="nav-link link-arm active" href="#env-manual-arm" data-target="#env-manual-arm" data-toggle="tab">ARM</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link link-x86" href="#env-manual-x86" data-target="#env-manual-x86" data-toggle="tab">x86</a>
+                              </li>  
+                            </ul> 
+                            <div class="tab-content clearfix">
+                              <div class="tab-pane active" id="env-manual-arm">
+                                <div class="container">
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/first/compose/infrastructure/docker-compose.yaml -O /run/homelab/compose/infrastructure/docker-compose.yaml</span>
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/first/storage/traefik/traefik.toml -O /run/homelab/storage/traefik/traefik.toml</span>
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/first/storage/traefik/config/certs.toml -O /run/homelab/storage/traefik/config/certs.toml</span>
+                                </div>
+                              </div>
+                              <div class="tab-pane" id="env-manual-x86">
+                                <div class="container">
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/first/compose/infrastructure/docker-compose.yaml -O /run/homelab/compose/infrastructure/docker-compose.yaml</span>
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/first/storage/traefik/traefik.toml -O /run/homelab/storage/traefik/traefik.toml</span>
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/first/storage/traefik/config/certs.toml -O /run/homelab/storage/traefik/config/certs.toml</span>
+                                </div>
+                              </div>
+                            </div>
+                            <p>once you've copied the files over, make sure to update <span class="file">/run/homelab/compose/infrastructure/docker-compose.yaml</span> to replace ${hostname} with your machine's hostname.</p>
+                          </div>
+                          
+                          <div class="col-md-12">
+                            <h4>adding containers</h4>
+                            <p>when standing up additional containers, all you need to do to have them served correctly by traefik behind our certificate is to ensure the container is on the same network as traefik and add the traefik labels:</p>
+                            <div class="container">
+                              <span>    network_mode: bridge</span>
+                              <span>    labels:</span>
+                              <span>      - 'traefik.enable=true'</span>
+                              <span>      - 'traefik.http.routers.{your-container}.rule=Host(`{your-subdomain}.homelab.express`)'</span>
+                              <span>      - 'traefik.http.routers.{your-container}.entrypoints=web-secure'</span>
+                              <span>      - 'traefik.http.routers.{your-container}.tls'</span>
+                              <span>      - 'traefik.http.services.{your-container}.loadbalancer.server.port={your-port}'</span>
+                            </div>
+                            <p>here is an example with the <a class="obvious-link" href="https://hub.docker.com/r/containous/whoami">whoami</a> container, which stands up a lightweight demo server:</p>
+                            <div class="container">
+                              <span>version: '3.8'</span>
+                              <span></span>
+                              <span>services:</span>
+                              <span>  whoami:</span>
+                              <span>    image: 'containous/whoami'</span>
+                              <span>    container_name: whoami</span>
+                              <span>    restart: always</span>
+                              <span>    network_mode: bridge</span>
+                              <span>    labels:</span>
+                              <span>      - 'traefik.enable=true'</span>
+                              <span>      - 'traefik.http.routers.whoami.rule=Host(`whoami.homelab.express`)'</span>
+                              <span>      - 'traefik.http.routers.whoami.entrypoints=web-secure'</span>
+                              <span>      - 'traefik.http.routers.whoami.tls'</span>
+                              <span>      - 'traefik.http.services.whoami.loadbalancer.server.port=80'</span>
+                            </div>
+                          </div>
+                          
+                          <div class="col-md-12">
+                            <h4>adding devices</h4>
+                            <p>adding additional devices is the same as setting up the first one, except the script to set up the environment is slightly different:</p>
+                            <ul class="nav nav-tabs justify-content-end">
+                              <li class="nav-item">
+                                <a class="nav-link link-arm active" href="#env-add-arm" data-target="#env-add-arm" data-toggle="tab">ARM</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link link-x86" href="#env-add-x86" data-target="#env-add-x86" data-toggle="tab">x86</a>
+                              </li>  
+                            </ul> 
+                            <div class="tab-content clearfix">
+                              <div class="tab-pane active" id="env-add-arm">
+                                <div class="container">
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/homelab.express-add-on.sh</span>
+                                  <span>sh homelab.express-add-on.sh</span>
+                                </div>
+                              </div>
+                              <div class="tab-pane" id="env-add-x86">
+                                <div class="container">
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/homelab.express-add-on.sh</span>
+                                  <span>sh homelab.express-add-on.sh</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div class="col-md-12">
+                            <h4>manually adding devices</h4>
+                            <p>if you prefer not to use the script, the only difference between the <span class="file">first</span> script and the <span class="file">add-on</span> script is that we use portainer agent instead of portainer in <span class="file">/run/homelab/compose/infrastructure/docker-compose.yaml</span>:</p>
+                            <div class="container">
+                              <span>  portainer-agent:</span>
+                              <span>    image: 'portainer/agent'</span>
+                              <span>    container_name: 'portainer-agent'</span>
+                              <span>    restart: always</span>
+                              <span>    ports:</span>
+                              <span>      - '9001:9001'</span>
+                              <span>    volumes:</span>
+                              <span>      - '/var/run/docker.sock:/var/run/docker.sock'</span>
+                              <span>      - '/var/lib/docker/volumes:/var/lib/docker/volumes'</span>
+                              <span>    network_mode: bridge</span>
+                            </div>
+                          </div>
+                        
+                        </div><!--/row-->
+                      </div><!--/tab-pane-->
+                      
+                      <div class="tab-pane" id="env-swarm">
+                        <div class="row">
+                        
+                          <div class="col-md-12">
+                            <h4>prep</h4>
+                            <p>follow these steps to prepare your device:</p>
+                            <ol class="dashes-list">
+                              <li>update the machine's IP address with a Fixed Allocation from your DHCP provider (probably your home router)</li>
+                              <li>set up <a class="obvious-link" href="https://linuxhint.com/install_docker_raspberry_pi-2/">docker and docker-compose</a></li>
+                              <li>run the following commands:
+                                <div class="container">
+                                  <span>sudo groupadd homelab</span>
+                                  <span>sudo usermod -aG homelab $(whoami)</span>
+                                  <span>sudo mkdir /run/homelab -m775</span>
+                                  <span>sudo chgrp homelab /run/homelab</span>
+                                  <span>docker swarm init</span>
+                                </div>
+                              </li>
+                            </ol>
+                            <p>if your device has multiple IP addresses assigned to it, you will need to specify the static IP address you set in the first step by including the <span class="command">--advertise-addr</span> option in the final <span class="command">docker swarm init</span> command.</p>
+                          </div>
+                          
+                          <div class="col-md-12">
+                            <h4>run</h4>
+                            <p>once your device is prepped, you can use our script to set up the environment:</p>
+                            <ul class="nav nav-tabs justify-content-end">
+                              <li class="nav-item">
+                                <a class="nav-link link-arm active" href="#env-arm" data-target="#env-arm" data-toggle="tab">ARM</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link link-x86" href="#env-x86" data-target="#env-x86" data-toggle="tab">x86</a>
+                              </li>  
+                            </ul> 
+                            <div class="tab-content clearfix">
+                              <div class="tab-pane active" id="env-arm">
+                                <div class="container">
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/homelab.express-first.sh</span>
+                                  <span>sh homelab.express-first.sh</span>
+                                </div>
+                              </div>
+                              <div class="tab-pane" id="env-x86">
+                                <div class="container">
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/homelab.express-first.sh</span>
+                                  <span>sh homelab.express-first.sh</span>
+                                </div>
+                              </div>
+                            </div>
+                            <p>then head to <span class="file">/run/homelab/compose/infrastructure/</span> and start your infrastructure containers:</p>
+                            <div class="container">
+                              <span>docker-compose up -d</span>
+                            </div>
+                            <p>as long as you have your new lab's IP set in your hosts file, you can head to <a class="obvious-link" href="https://manage.homelab.express">https://manage.homelab.express</a>, set up a password, and explore portainer.</p>
+                            <p>you can also head to https://{hostname}.homelab.express (replacing {hostname} with the hostname of your device) to view the traefik dashboard.</p>
+                          </div>
+                          
+                          <div class="col-md-12">
+                            <h4>manual setup</h4>
+                            <p>if you prefer not to use the script, you can replicate its functionality by running the following commands:</p>
+                            <ul class="nav nav-tabs justify-content-end">
+                              <li class="nav-item">
+                                <a class="nav-link link-arm active" href="#env-manual-arm" data-target="#env-manual-arm" data-toggle="tab">ARM</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link link-x86" href="#env-manual-x86" data-target="#env-manual-x86" data-toggle="tab">x86</a>
+                              </li>  
+                            </ul> 
+                            <div class="tab-content clearfix">
+                              <div class="tab-pane active" id="env-manual-arm">
+                                <div class="container">
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/first/compose/infrastructure/docker-compose.yaml -O /run/homelab/compose/infrastructure/docker-compose.yaml</span>
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/first/storage/traefik/traefik.toml -O /run/homelab/storage/traefik/traefik.toml</span>
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/first/storage/traefik/config/certs.toml -O /run/homelab/storage/traefik/config/certs.toml</span>
+                                </div>
+                              </div>
+                              <div class="tab-pane" id="env-manual-x86">
+                                <div class="container">
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/first/compose/infrastructure/docker-compose.yaml -O /run/homelab/compose/infrastructure/docker-compose.yaml</span>
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/first/storage/traefik/traefik.toml -O /run/homelab/storage/traefik/traefik.toml</span>
+                                  <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/first/storage/traefik/config/certs.toml -O /run/homelab/storage/traefik/config/certs.toml</span>
+                                </div>
+                              </div>
+                            </div>
+                            <p>once you've copied the files over, make sure to update <span class="file">/run/homelab/compose/infrastructure/docker-compose.yaml</span> to replace ${hostname} with your machine's hostname.</p>
+                          </div>
+                          
+                          <div class="col-md-12">
+                            <h4>adding services</h4>
+                            <p>when standing up additional services, all you need to do to have them served correctly by traefik behind our certificate is to ensure the service is on the same network as traefik and add the traefik labels:</p>
+                            <div class="container">
+                              <span>    network_mode: bridge</span>
+                              <span>    labels:</span>
+                              <span>      - 'traefik.enable=true'</span>
+                              <span>      - 'traefik.http.routers.{your-container}.rule=Host(`{your-subdomain}.homelab.express`)'</span>
+                              <span>      - 'traefik.http.routers.{your-container}.entrypoints=web-secure'</span>
+                              <span>      - 'traefik.http.routers.{your-container}.tls'</span>
+                              <span>      - 'traefik.http.services.{your-container}.loadbalancer.server.port={your-port}'</span>
+                            </div>
+                            <p>here is an example with the <a class="obvious-link" href="https://hub.docker.com/r/containous/whoami">whoami</a> container, which stands up a lightweight demo server:</p>
+                            <div class="container">
+                              <span>version: '3.8'</span>
+                              <span></span>
+                              <span>services:</span>
+                              <span>  whoami:</span>
+                              <span>    image: 'containous/whoami'</span>
+                              <span>    container_name: whoami</span>
+                              <span>    restart: always</span>
+                              <span>    network_mode: bridge</span>
+                              <span>    labels:</span>
+                              <span>      - 'traefik.enable=true'</span>
+                              <span>      - 'traefik.http.routers.whoami.rule=Host(`whoami.homelab.express`)'</span>
+                              <span>      - 'traefik.http.routers.whoami.entrypoints=web-secure'</span>
+                              <span>      - 'traefik.http.routers.whoami.tls'</span>
+                              <span>      - 'traefik.http.services.whoami.loadbalancer.server.port=80'</span>
+                            </div>
+                          </div>
+                          
+                          <div class="col-md-12">
+                            <h4>adding nodes</h4>
+                            <p>adding additional nodes to the swarm comes with a challenge:  namely, how to managed shared data.  you have a few options for how to go about this:  you can create global volumes, have copies of the relevant data on every node, or use placement constraints to keep services that rely on certain data deployed only to the nodes that contain that data.</p>
+                            <p>once you've solved the data problem, you can add a node to your swarm by getting a join token from a manager node already in the swarm:</p>
+                            <ul class="nav nav-tabs justify-content-end">
+                              <li class="nav-item">
+                                <a class="nav-link link-worker active" href="#swarm-add-worker" data-target="#swarm-add-worker" data-toggle="tab">worker</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link link-manager" href="#swarm-add-manager" data-target="#swarm-add-manager" data-toggle="tab">manager</a>
+                              </li>  
+                            </ul> 
+                            <div class="tab-content clearfix">
+                              <div class="tab-pane active" id="swarm-add-worker">
+                                <div class="container">
+                                  <span>docker swarm join-token worker</span>
+                                </div>
+                              </div>
+                              <div class="tab-pane" id="swarm-add-manager">
+                                <div class="container">
+                                  <span>docker swarm join-token manager</span>
+                                </div>
+                              </div>
+                            </div>
+                            <p>run the returned join command on the node you want to join to the swarm.  you can continue managing the swarm and its services from a manager node or from within portainer.</p>
+                          </div>
+                          
+                        </div><!--/row-->
+                      </div><!--/tab-pane-->
                     </div>
                   </div>
-                  <div class="tab-pane" id="env-x86">
-                    <div class="container">
-                      <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/homelab.express-first.sh</span>
-                      <span>sh homelab.express-first.sh</span>
-                    </div>
-                  </div>
-                </div>
-                <p>then head to <span class="file">/run/homelab/compose/infrastructure/</span> and start your infrastructure containers:</p>
-                <div class="container">
-                  <span>docker-compose up -d</span>
-                </div>
-                <p>as long as you have your new lab's IP set in your hosts file, you can head to <a class="obvious-link" href="https://manage.homelab.express">https://manage.homelab.express</a>, set up a password, and explore portainer.<p>
-                <p>you can also head to https://{hostname}.homelab.express (replacing {hostname} with the hostname of your device) to view the traefik dashboard.</p>
-              </div>
-              
-              <div class="col-md-12">
-                <h4>manual setup</h4>
-                <p>if you prefer not to use the script, you can replicate its functionality by running the following commands:</p>
-                <ul class="nav nav-tabs justify-content-end">
-                  <li class="nav-item">
-                    <a class="nav-link link-arm active" href="#env-manual-arm" data-target="#env-manual-arm" data-toggle="tab">ARM</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link link-x86" href="#env-manual-x86" data-target="#env-manual-x86" data-toggle="tab">x86</a>
-                  </li>  
-                </ul> 
-                <div class="tab-content clearfix">
-                  <div class="tab-pane active" id="env-manual-arm">
-                    <div class="container">
-                      <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/first/compose/infrastructure/docker-compose.yaml -O /run/homelab/compose/infrastructure/docker-compose.yaml</span>
-                      <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/first/storage/traefik/traefik.toml -O /run/homelab/storage/traefik/traefik.toml</span>
-                      <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/first/storage/traefik/config/certs.toml -O /run/homelab/storage/traefik/config/certs.toml</span>
-                    </div>
-                  </div>
-                  <div class="tab-pane" id="env-manual-x86">
-                    <div class="container">
-                      <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/first/compose/infrastructure/docker-compose.yaml -O /run/homelab/compose/infrastructure/docker-compose.yaml</span>
-                      <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/first/storage/traefik/traefik.toml -O /run/homelab/storage/traefik/traefik.toml</span>
-                      <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/first/storage/traefik/config/certs.toml -O /run/homelab/storage/traefik/config/certs.toml</span>
-                    </div>
-                  </div>
-                </div>
-                <p>once you've copied the files over, make sure to update <span class="file">/run/homelab/compose/infrastructure/docker-compose.yaml</span> to replace ${hostname} with your machine's hostname.</p>
-              </div>
-              
-              <div class="col-md-12">
-                <h4>adding containers</h4>
-                <p>when standing up additional containers, all you need to do to have them served correctly by traefik behind our certificate is to ensure the container is on the same network as traefik and add the traefik labels:</p>
-                <div class="container">
-                  <span>    network_mode: bridge</span>
-                  <span>    labels:</span>
-                  <span>      - 'traefik.enable=true'</span>
-                  <span>      - 'traefik.http.routers.{your-container}.rule=Host(`{your-subdomain}.homelab.express`)'</span>
-                  <span>      - 'traefik.http.routers.{your-container}.entrypoints=web-secure'</span>
-                  <span>      - 'traefik.http.routers.{your-container}.tls'</span>
-                  <span>      - 'traefik.http.services.{your-container}.loadbalancer.server.port={your-port}'</span>
-                </div>
-                <p>here is an example with the <a class="obvious-link" href="https://hub.docker.com/r/containous/whoami">whoami</a> container, which stands up a lightweight demo server:</p>
-                <div class="container">
-                  <span>version: '3.8'</span>
-                  <span></span>
-                  <span>services:</span>
-                  <span>  whoami:</span>
-                  <span>    image: 'containous/whoami'</span>
-                  <span>    container_name: whoami</span>
-                  <span>    restart: always</span>
-                  <span>    network_mode: bridge</span>
-                  <span>    labels:</span>
-                  <span>      - 'traefik.enable=true'</span>
-                  <span>      - 'traefik.http.routers.whoami.rule=Host(`whoami.homelab.express`)'</span>
-                  <span>      - 'traefik.http.routers.whoami.entrypoints=web-secure'</span>
-                  <span>      - 'traefik.http.routers.whoami.tls'</span>
-                  <span>      - 'traefik.http.services.whoami.loadbalancer.server.port=80'</span>
-                </div>
-              </div>
-              
-              <div class="col-md-12">
-                <h4>adding devices</h4>
-                <p>adding additional devices is the same as setting up the first one, except the script to set up the environment is slightly different:</p>
-                <ul class="nav nav-tabs justify-content-end">
-                  <li class="nav-item">
-                    <a class="nav-link link-arm active" href="#env-add-arm" data-target="#env-add-arm" data-toggle="tab">ARM</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link link-x86" href="#env-add-x86" data-target="#env-add-x86" data-toggle="tab">x86</a>
-                  </li>  
-                </ul> 
-                <div class="tab-content clearfix">
-                  <div class="tab-pane active" id="env-add-arm">
-                    <div class="container">
-                      <span>wget https://cinderblockgames.github.io/homelab.express/setup/arm/homelab.express-add-on.sh</span>
-                      <span>sh homelab.express-add-on.sh</span>
-                    </div>
-                  </div>
-                  <div class="tab-pane" id="env-add-x86">
-                    <div class="container">
-                      <span>wget https://cinderblockgames.github.io/homelab.express/setup/x86/homelab.express-add-on.sh</span>
-                      <span>sh homelab.express-add-on.sh</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="col-md-12">
-                <h4>manually adding devices</h4>
-                <p>if you prefer not to use the script, the only difference between the <span class="file">first</span> script and the <span class="file">add-on</span> script is that we use portainer agent instead of portainer in <span class="file">/run/homelab/compose/infrastructure/docker-compose.yaml</span>:</p>
-                <div class="container">
-                  <span>  portainer-agent:</span>
-                  <span>    image: 'portainer/agent'</span>
-                  <span>    container_name: 'portainer-agent'</span>
-                  <span>    restart: always</span>
-                  <span>    ports:</span>
-                  <span>      - '9001:9001'</span>
-                  <span>    volumes:</span>
-                  <span>      - '/var/run/docker.sock:/var/run/docker.sock'</span>
-                  <span>      - '/var/lib/docker/volumes:/var/lib/docker/volumes'</span>
-                  <span>    network_mode: bridge</span>
+                  
                 </div>
               </div>
               
             </div>
           </div>
+          
         </div>
       </section>
     </div>
