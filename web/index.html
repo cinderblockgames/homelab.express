@@ -330,15 +330,42 @@ https://templatemo.com/tm-531-reflux
                 
                   <div class="col-md-12">
                     <h4>docker-compose.yaml example</h4>
-                    <div class="container">
-                      <span>  traefik-cert-updater:</span>
-                      <span>    image: 'cinderblockgames/homelab.express-cert-updater:latest'</span>
-                      <span>    container_name: 'traefik-cert-updater'</span>
-                      <span>    restart: always</span>
-                      <span>    volumes:</span>
-                      <span>      - '/run/homelab/storage/traefik/config/certs.toml:/data/dynamic.toml'</span>
-                      <span>      - '/run/homelab/storage/traefik/config/certs:/data/certs'</span>
-                      <span>    network_mode: bridge</span>
+                    <ul class="nav nav-tabs justify-content-end">
+                      <li class="nav-item">
+                        <a class="nav-link link-standalone active" href="#updater-standalone" data-target="#updater-standalone" data-toggle="tab">standalone</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link link-swarm" href="#updater-swarm" data-target="#updater-swarm" data-toggle="tab">swarm</a>
+                      </li>  
+                    </ul>
+                    <div class="tab-content clearfix">
+                      <div class="tab-pane active" id="updater-standalone">
+                        <div class="container">
+                          <span>  traefik-cert-updater:</span>
+                          <span>    image: 'cinderblockgames/homelab.express-cert-updater:latest'</span>
+                          <span>    container_name: 'traefik-cert-updater'</span>
+                          <span>    restart: always</span>
+                          <span>    volumes:</span>
+                          <span>      - '/run/homelab/storage/traefik/config/certs.toml:/data/dynamic.toml'</span>
+                          <span>      - '/run/homelab/storage/traefik/config/certs:/data/certs'</span>
+                          <span>    network_mode: bridge</span>
+                        </div>
+                      </div>
+                      <div class="tab-pane" id="updater-swarm">
+                        <div class="container">
+                          <span>services:</span>
+                          <span>  traefik-cert-updater:</span>
+                          <span>    image: 'cinderblockgames/homelab.express-cert-updater:latest'</span>
+                          <span>    volumes:</span>
+                          <span>      - '/run/homelab/storage/traefik/config/certs.toml:/data/dynamic.toml'</span>
+                          <span>      - '/run/homelab/storage/traefik/config/certs:/data/certs'</span>
+                          <span>    networks: [swarm]</span>
+                          <span></span>
+                          <span>networks:</span>
+                          <span>  swarm:</span>
+                          <span>    external: true</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   
