@@ -1,13 +1,11 @@
-#FROM httpd:latest
-FROM php:apache:latest
+FROM php:7.3-apache
+RUN a2enmod rewrite && \
+    a2enmod headers && \
+    service apache2 restart
 
-COPY web/ /usr/local/apache2/htdocs/
+COPY web/ /var/www/html
 
-# override htaccess with dev version
-#COPY .htaccess /usr/local/apache2/htdocs/
-
-# enable htaccess options
-#RUN sed -i '/LoadModule rewrite_module/s/^#//g' /usr/local/apache2/conf/httpd.conf && \
-#    sed -i 's#AllowOverride [Nn]one#AllowOverride All#' /usr/local/apache2/conf/httpd.conf
+# use dev htaccess
+COPY .htaccess /var/www/html/.htaccess
 
 EXPOSE 80
