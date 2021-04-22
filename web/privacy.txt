@@ -34,4 +34,4 @@ COOKIES AND TRACKING TECHNOLOGIES
 
 we don't use cookies or load third party resources (except fonts from google).
 if you want to block cookies and tracking technologies, check out the Brave
-browser and the DuckDuckGo search engine.
+browser and the DuckDuckGo or Startpage search engine.
