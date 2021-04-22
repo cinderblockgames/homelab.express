@@ -170,6 +170,21 @@ html {
   color: #a43f49;
 }
 
+.menu .privacy-policy {
+  position: relative;
+  margin-top: 60px;
+}
+
+.menu .privacy-policy p {
+  border-top: 1px solid rgba(250, 250, 250, 0.1);
+  display: inline-block;
+  width: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 30px;
+  font-size: 13px;
+}
+
 .menu:before,
 .menu:after {
   content: "";
