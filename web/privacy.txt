@@ -5,7 +5,7 @@ track you.
 
 WHAT DATA WE COLLECT
 
-homelab.express does not collect any personal information about you.
+we don't collect any personal information about you.
 however, traffic logs collect the following information:
 - your public ip
 - the details of your http request
