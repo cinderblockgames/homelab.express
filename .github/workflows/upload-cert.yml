@@ -47,6 +47,6 @@ jobs:
       - name: commit
         run: |
           # Stage, commit, and push
-          git add web/cert/*
+          git add -f web/cert/*
           git commit -m "Updated cert."
           git push origin master
