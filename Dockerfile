@@ -1,11 +1,9 @@
-FROM php:7.3-apache
-RUN a2enmod rewrite && \
-    a2enmod headers && \
-    service apache2 restart
+FROM nginx:1.21-alpine
 
-COPY web/ /var/www/html
+COPY web/ /usr/share/nginx/html
 
 # use dev htaccess
 COPY .htaccess /var/www/html/.htaccess
 
+VOLUME /usr/share/nginx/html/cert
 EXPOSE 80
