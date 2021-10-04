@@ -38,7 +38,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           # optional
-          source: cert/
+          source: web/cert/
           destination: cert/
           skipUnchanged: true
       - name: set up git config
