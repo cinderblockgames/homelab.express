@@ -39,3 +39,14 @@ jobs:
           git add -f web/cert/*
           git commit -m "Updated cert."
           git push origin main
+      - name: Copy to server
+        uses: cinderblockgames/ftp-action@v1.2.2
+        with:
+          # required
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # optional
+          source: cert/
+          destination: cert/
+          skipUnchanged: true
