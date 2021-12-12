@@ -41,4 +41,4 @@ jobs:
           acmeAccountKeyPath: 'secrets/acme.key'
           certChainPath: 'secrets/cert.cer'
           #certKeyPath: 'secrets/cert.key'
-          reason: 'KeyCompromise'
+          #reason: 'KeyCompromise'
