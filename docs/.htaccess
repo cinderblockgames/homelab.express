@@ -1,0 +1,18 @@
+RewriteEngine On
+
+# force https and remove www
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\.homelab\.express [NC]
+RewriteRule ^(.*)$ https://homelab.express%{REQUEST_URI} [L,R=301]
+
+# redirect 404s to /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ / [NC,L,R=302]
+
+# security headers
+Header always set Content-Security-Policy "default-src 'none'; font-src 'self' https://fonts.gstatic.com; img-src 'self'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; frame-ancestors 'none'; base-uri 'none'; form-action 'none'"
+Header always set Strict-Transport-Security "max-age=63072000"
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "DENY"
+Header always set X-XSS-Protection "1; mode=block"
