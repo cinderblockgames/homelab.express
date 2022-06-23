@@ -1,2 +1,2 @@
 # https://homelab.express
-For quick setup, head into the **setup** folder.
+For quick setup, head into the [**docs/setup**](docs/setup) folder.
