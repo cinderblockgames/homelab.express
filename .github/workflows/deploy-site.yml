@@ -20,7 +20,7 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         # optional
-        source: web
+        source: docs
         skipDirectories: .github|.well-known|cert
         skipUnchanged: true
         
