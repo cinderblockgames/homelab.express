@@ -29,7 +29,7 @@ jobs:
           encoded-value: ${{ secrets.CERT_PRIVATE_KEY }}
           destination-file: docs/cert/wildcard.homelab.express.pfx
       - name: Remove private key protection
-        run: openssl pkcs12 -in ${{ github.workspace }}/docs/cert/wildcard.homelab.express.pfx -provider legacy -nocerts -out ${{ github.workspace }}/docs/cert/wildcard.homelab.express.key -nodes -password pass:''
+        run: openssl pkcs12 -in ${{ github.workspace }}/docs/cert/wildcard.homelab.express.pfx -provider legacy -nomacver -nocerts -out ${{ github.workspace }}/docs/cert/wildcard.homelab.express.key -nodes -password pass:''
       - name: Copy to server
         uses: cinderblockgames/ftp-action@v1.2.2
         with:
