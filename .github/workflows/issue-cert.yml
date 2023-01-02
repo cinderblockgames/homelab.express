@@ -20,7 +20,7 @@ jobs:
       #    contents: ${{ secrets.ACME_ACCOUNT_KEY }}
       #    write-mode: overwrite
       - name: Issue certificate
-        uses: cinderblockgames/letsencrypt-dns-cpanel-action@v1.1.0
+        uses: cinderblockgames/letsencrypt-dns-cpanel-action@v1.2.0
         with:
           # cPanel
           host: cinderblockgames.com
