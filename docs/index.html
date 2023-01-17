@@ -451,7 +451,14 @@ https://templatemo.com/tm-531-reflux
                             <p>follow these steps to prepare your device:</p>
                             <ol class="dashes-list">
                               <li>update the machine's IP address with a Fixed Allocation from your DHCP provider (probably your home router)</li>
-                              <li>set up <a class="obvious-link" href="https://linuxhint.com/install_docker_raspberry_pi-2/">docker and docker-compose</a></li>
+                              <li>set up docker, then reboot:
+                                <div class="container">
+                                  <span>curl -fsSL https://get.docker.com -o get-docker.sh</span>
+                                  <span>sudo sh get-docker.sh</span>
+                                  <span>sudo usermod -aG docker $(whoami)</span>
+                                  <span>sudo reboot</span>
+                                </div>
+                              </li>
                               <li>run the following commands, then log out and back in:
                                 <div class="container">
                                   <span>sudo groupadd homelab</span>
@@ -490,7 +497,7 @@ https://templatemo.com/tm-531-reflux
                             </div>
                             <p>then head to <span class="file">/run/homelab/compose/infrastructure/</span> and start your infrastructure containers:</p>
                             <div class="container">
-                              <span>docker-compose up -d</span>
+                              <span>docker compose up -d</span>
                             </div>
                             <p>as long as you have your new lab's IP set in your hosts file, you can head to <a class="obvious-link" href="https://manage.homelab.express">https://manage.homelab.express</a>, set up a password, and explore portainer.</p>
                             <p>you can also head to https://{hostname}.homelab.express (replacing {hostname} with the hostname of your device) to view the traefik dashboard.</p>
@@ -612,7 +619,14 @@ https://templatemo.com/tm-531-reflux
                             <p>follow these steps to prepare your device:</p>
                             <ol class="dashes-list">
                               <li>update the machine's IP address with a Fixed Allocation from your DHCP provider (probably your home router)</li>
-                              <li>set up <a class="obvious-link" href="https://linuxhint.com/install_docker_raspberry_pi-2/">docker and docker-compose</a></li>
+                              <li>set up docker, then reboot:
+                                <div class="container">
+                                  <span>curl -fsSL https://get.docker.com -o get-docker.sh</span>
+                                  <span>sudo sh get-docker.sh</span>
+                                  <span>sudo usermod -aG docker $(whoami)</span>
+                                  <span>sudo reboot</span>
+                                </div>
+                              </li>
                               <li>run the following commands, then log out and back in:
                                 <div class="container">
                                   <span>sudo groupadd homelab</span>
