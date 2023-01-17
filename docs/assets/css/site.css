@@ -445,6 +445,10 @@ span.file {
   counter-reset: line;
 }
 
+.code .container.no-bottom-margin: {
+  margin-bottom: 0px;	
+}
+
 .code .container span {
   white-space: pre;
   display: block;
