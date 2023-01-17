@@ -445,7 +445,7 @@ span.file {
   counter-reset: line;
 }
 
-.code .container.no-bottom-margin: {
+.code .container.no-bottom-margin {
   margin-bottom: 0px;	
 }
 
