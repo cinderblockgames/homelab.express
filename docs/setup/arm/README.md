@@ -8,7 +8,11 @@ If you are starting a new swarm, copy the contents of the **swarm** directory to
 ## Considerations
 Before copying anything, make sure your machine is set up correctly:
 - update the machine's IP address with a Fixed Allocation from your DHCP provider (probably your home router)
-- set up [docker and docker-compose](https://linuxhint.com/install_docker_raspberry_pi-2/)
+- set up docker with the following command:
+  ```
+  curl -fsSL https://get.docker.com -o get-docker.sh ; sudo sh get-docker.sh ; sudo usermod -aG docker $(whoami)
+  ```
+- reboot and log back in
 - run the following command:
   ```
   sudo groupadd homelab ; sudo usermod -aG homelab $(whoami) ; sudo mkdir /run/homelab -m775 ; sudo chgrp homelab /run/homelab
@@ -34,7 +38,7 @@ You'll still need to complete the steps under **Considerations** first, but you 
 
 ## What now?
 
-Head to `/run/homelab/compose/infrastructure/` and run `docker-compose up -d`.. and that's it!
+Head to `/run/homelab/compose/infrastructure/` and run `docker compose up -d`.. and that's it!
 
 If you've got your new lab's IP set in your hosts file, head to one of the following URLs to check out your new environment:
 - https://manage.homelab.express
