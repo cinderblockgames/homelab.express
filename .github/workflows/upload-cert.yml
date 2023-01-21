@@ -15,14 +15,14 @@ jobs:
     runs-on: ubuntu-20.04
     #if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-      #- name: Set up git directory
-      #  uses: actions/checkout@v2.3.4
-      #- name: Copy certificate public chain
-      #  uses: DamianReeves/write-file-action@v1.0
-      #  with:
-      #    path: docs/cert/wildcard.homelab.express.cer
-      #    contents: ${{ secrets.CERT_PUBLIC_CHAIN }}
-      #    write-mode: overwrite
+      - name: Set up git directory
+        uses: actions/checkout@v2.3.4
+      - name: Copy certificate public chain
+        uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: docs/cert/wildcard.homelab.express.cer
+          contents: ${{ secrets.CERT_PUBLIC_CHAIN }}
+          write-mode: overwrite
       - name: Copy certificate private key
         uses: kitek/decode-base64-into-file-action@1.0
         with:
@@ -30,24 +30,24 @@ jobs:
           destination-file: docs/cert/wildcard.homelab.express.pfx
       - name: Remove private key protection
         run: openssl pkcs12 -in ${{ github.workspace }}/docs/cert/wildcard.homelab.express.pfx -nocerts -out ${{ github.workspace }}/docs/cert/wildcard.homelab.express.key -nodes -keypbe NONE -certpbe NONE -password pass:''
-      #- name: Copy to server
-      #  uses: cinderblockgames/ftp-action@v1.2.2
-      #  with:
-      #    # required
-      #    server: ${{ secrets.FTP_SERVER }}
-      #    username: ${{ secrets.FTP_USERNAME }}
-      #    password: ${{ secrets.FTP_PASSWORD }}
-      #    # optional
-      #    source: docs/cert/
-      #    destination: cert/
-      #    skipUnchanged: true
-      #- name: set up git config
-      #  run: |
-      #    git config user.name "GitHub Actions Bot"
-      #    git config user.email "<>"
-      #- name: commit
-      #  run: |
-      #    # Stage, commit, and push
-      #    git add -f docs/cert/*
-      #    git commit -m "Updated cert."
-      #    git push origin main
+      - name: Copy to server
+        uses: cinderblockgames/ftp-action@v1.2.2
+        with:
+          # required
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # optional
+          source: docs/cert/
+          destination: cert/
+          skipUnchanged: true
+      - name: set up git config
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+      - name: commit
+        run: |
+          # Stage, commit, and push
+          git add -f docs/cert/*
+          git commit -m "Updated cert."
+          git push origin main
