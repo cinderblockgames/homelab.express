@@ -23,7 +23,6 @@ jobs:
         uses: cinderblockgames/letsencrypt-dns-namecheap-action@1.0.0
         with:
           # Namecheap
-          host: cinderblockgames.com
           apiUser: '${{ secrets.NAMECHEAP_API_USER }}'
           apiKey: '${{ secrets.NAMECHEAP_API_KEY }}'
           domain: homelab.express
