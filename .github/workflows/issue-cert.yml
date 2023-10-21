@@ -11,7 +11,7 @@ on:
 
 jobs:
   update-cert:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       #- name: Copy ACME account key
       #  uses: DamianReeves/write-file-action@v1.0
