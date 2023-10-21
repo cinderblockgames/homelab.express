@@ -20,7 +20,7 @@ jobs:
       #    contents: ${{ secrets.ACME_ACCOUNT_KEY }}
       #    write-mode: overwrite
       - name: Issue certificate
-        uses: cinderblockgames/letsencrypt-dns-namecheap-action@v1.0.0
+        uses: cinderblockgames/letsencrypt-dns-namecheap-action@1.0.0
         with:
           # Namecheap
           host: cinderblockgames.com
