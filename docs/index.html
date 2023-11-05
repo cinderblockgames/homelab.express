@@ -33,7 +33,7 @@ https://templatemo.com/tm-531-reflux
             </div>
             <nav class="main-nav" role="navigation">
               <ul class="main-menu">
-                <li><a href="#section-network">your personal network</a></li>
+                <li><a href="#section-shutting-down">shutting down</a></li>
                 <li><a href="#section-subdomains" style="display: none">multi-level subdomains</a></li>
                 <li><a href="#section-updates">automated updates</a></li>
                 <li><a href="#section-setup">get up and running</a></li>
@@ -53,15 +53,14 @@ https://templatemo.com/tm-531-reflux
         </div>
       </div>
 
-      <section class="section network" data-section="section-network">
+      <section class="section network" data-section="section-shutting-down">
         <div class="container">
           <div class="section-heading">
-            <h2>your personal network</h2>
+            <h2>shutting down</h2>
             <div class="line-dec"></div>
-            <p>the homelab.express domain is reserved for your private use, intended to aid in the setup of TLS in your personal home lab.</p>
-            <p>we provide you with our wildcard certificate, renewed every month through Let's Encrypt and shared here.  for free, forever.</p>
-            <p><em>note: because the private key is available publicly, the certificates we provide are in a revoked state.  this shouldn't affect their usefulness in most cases*, but you should be aware of this fact before starting to work with the certificates we provide.  in every case, it's better to use your own domain if you have one.  hopefully, eventually, there will be a better-supported way to provide TLS in local environments, and our service will no longer be needed.<br /><small>* ios devices use ocsp, so the revoked certificate will not work if you are targeting ios devices.</small></em></p>
-            <p><strong>note2: our permanent hosting account got shut down without notice, so the multi-level subdomains are on hiatus.  they will hopefully return soon, but the certificate for now only includes *.homelab.express.</strong></p>
+            <p>thank you to everyone who has used and supported this project over the past few years.</p>
+            <p>i will keep a baseline *.homelab.express certificate available through march, after which the site will shut down.</p>
+            <p>if you need any of the multi-level subdomains, you can request them in the discord and i will do my best to provide a cert for you that work for you.</p>
           </div>
           <div class="row">
           
@@ -81,16 +80,6 @@ https://templatemo.com/tm-531-reflux
                 <h4><a href="/cert/wildcard.homelab.express.key" class="fill-container">.key</a></h4>
                 <p class="file-description">
                   plaintext private key
-                </p>
-              </div>
-            </div>
-            
-            <div class="col-md-4" style="display: none">
-              <div class="card">
-                <div class="service-icon"><i class="fa fa-lock large-icon" aria-hidden="true"></i></div>
-                <h4><a href="/cert/wildcard.homelab.express.pfx" class="fill-container">.pfx</a></h4>
-                <p class="file-description">
-                  certificate with private key and blank password
                 </p>
               </div>
             </div>
