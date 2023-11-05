@@ -34,7 +34,7 @@ https://templatemo.com/tm-531-reflux
             <nav class="main-nav" role="navigation">
               <ul class="main-menu">
                 <li><a href="#section-network">your personal network</a></li>
-                <li><a href="#section-subdomains">multi-level subdomains</a></li>
+                <li><a href="#section-subdomains" style="display: none">multi-level subdomains</a></li>
                 <li><a href="#section-updates">automated updates</a></li>
                 <li><a href="#section-setup">get up and running</a></li>
               </ul>
@@ -61,6 +61,7 @@ https://templatemo.com/tm-531-reflux
             <p>the homelab.express domain is reserved for your private use, intended to aid in the setup of TLS in your personal home lab.</p>
             <p>we provide you with our wildcard certificate, renewed every month through Let's Encrypt and shared here.  for free, forever.</p>
             <p><em>note: because the private key is available publicly, the certificates we provide are in a revoked state.  this shouldn't affect their usefulness in most cases*, but you should be aware of this fact before starting to work with the certificates we provide.  in every case, it's better to use your own domain if you have one.  hopefully, eventually, there will be a better-supported way to provide TLS in local environments, and our service will no longer be needed.<br /><small>* ios devices use ocsp, so the revoked certificate will not work if you are targeting ios devices.</small></em></p>
+            <p><em>note2: our permanent hosting account got shut down without notice, so the multi-level subdomains are on hiatus.  they will hopefully return soon, but the certificate for now only includes *.homelab.express.</p>
           </div>
           <div class="row">
           
@@ -98,7 +99,7 @@ https://templatemo.com/tm-531-reflux
         </div>
       </section>
 
-      <section class="section subdomains" data-section="section-subdomains">
+      <section class="section subdomains" data-section="section-subdomains" style="display: none">
         <div class="container">
           <div class="section-heading">
             <h2>multi-level subdomains</h2>
