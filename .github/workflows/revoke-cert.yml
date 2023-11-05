@@ -13,7 +13,6 @@ on:
 jobs:
   revoke-cert:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Copy ACME account key
         uses: DamianReeves/write-file-action@v1.0
